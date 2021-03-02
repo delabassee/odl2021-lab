@@ -1,0 +1,77 @@
+
+{
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "publisheddate": "07/30/2020",
+            "filename": "intro.md"
+        },
+        {         
+            "title": "Lab 1: Sign Up for your OCI Free Trial",
+            "description": "Login to Oracle Cloud",
+            "publisheddate": "03/10/2020",
+            "contentid": "12nnnn",
+            "filename":"lab1-sign-oci.md"
+        },
+        {
+            "title": "Lab 2: Setup your Oracle Cloud environment",
+            "publisheddate": "07/30/2020",
+            "filename": "lab2-conf-vm.md"
+        },
+        {
+            "title": "Lab 3: Exploring Helidon",
+            "publisheddate": "07/30/2020",
+            "filename": "lab3-helidon.md"
+        },
+        {
+            "title": "Lab 4: Java SE Preview Features",
+            "publisheddate": "07/30/2020",
+            "filename": "lab4-preview.md"
+        },
+        {
+            "title": "Lab 5: The Sample Application",
+            "publisheddate": "07/30/2020",
+            "filename": "lab5-conference-app.md"
+        },
+        {
+            "title": "Lab 6: Text Blocks",
+            "publisheddate": "07/30/2020",
+            "filename": "lab6-textblock.md"
+        },
+        {
+            "title": "Lab 7: Records",
+            "publisheddate": "07/30/2020",
+            "filename": "lab7-record.md"
+        },
+        {
+            "title": "Lab 8: Sealed Classes",
+            "publisheddate": "07/30/2020",
+            "filename": "lab8-sealed-class.md"
+        },
+        {
+            "title": "Lab 9: Switch Expressions",
+            "publisheddate": "07/30/2020",
+             "filename": "lab9-switch-expression.md"
+        },
+        {
+            "title": "Lab 10: Pattern Matching for instanceof",
+            "publisheddate": "07/30/2020",
+             "filename": "lab10-instanceof.md"
+        },
+        {
+            "title": "Lab 11: jpackage",
+            "publisheddate": "07/30/2020",
+             "filename": "lab11-jpackage.md"
+        },
+        {
+            "title": "Lab 12: jlink",
+            "publisheddate": "02/01/2021",
+             "filename": "lab12-jlink.md"
+        },
+        {
+            "title": "Wrap-up",
+            "publisheddate": "02/01/2021",
+             "filename": "conclusion.md"
+        }		
+     ]
+}
