@@ -1,1 +1,2 @@
+* add Sealed Class constraints
 * Update Free tier URLs!
