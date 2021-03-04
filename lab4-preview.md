@@ -66,7 +66,7 @@ Those 2 flags are enforcing a safeguard mechanism that informs you that non-perm
 
 The compilation now succeeds. Notice that you are still warned that preview features are used in the code.
 
-To run code that uses Preview Feature, you would face the same safeguard as Preview Features are also disabled at runtime! To be used, they should be explicitly enabled using the `--enable-preview` flag. The difference is that at runtime, you don't need to use a flag to confirm that version that you are using.
+To run code that uses Preview Feature, you would face the same safeguard as Preview Features are also disabled at runtime! To be used, they should be explicitly enabled using the `--enable-preview` flag. The difference is that at runtime, you don't need to use a flag to confirm the version that you are using.
 
 ```
 java --enable-preview SomePreviewTest
@@ -76,7 +76,7 @@ java --enable-preview SomePreviewTest
 
 ## Preview Features & Helidon
 
-Likewise, to use Preview Feature in Helidon, those should be enabled at both compile-time and runtime.
+Likewise, to use a Preview Feature in Helidon, those should be enabled at both compile-time and runtime.
 
 #### Compile-time configuration
 

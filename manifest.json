@@ -69,6 +69,11 @@
              "filename": "lab12-jlink.md"
         },
         {
+            "title": "Lab 13: Unix Domain Sockets",
+            "publisheddate": "03/03/2021",
+             "filename": "lab13-UDS.md"
+        },
+        {
             "title": "Wrap-up",
             "publisheddate": "02/01/2021",
              "filename": "conclusion.md"

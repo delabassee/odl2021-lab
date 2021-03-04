@@ -4,7 +4,7 @@
 
 This 10-minute optional lab will introduce you to **`jpackage`**, a tool that has started to incubate in JDK 14, and will be made a production-ready feature in JDK 16.
 
-The `jpackage` tool creates self-contained, platform-specific, Java application bundles. These bundles provide a simple solution to distribute your java applications as end-users will rely on the platform's usual approaches to install them (ex. double click on a .exe file on Windows, ...), upgrade them, and un-install them.
+The `jpackage` tool creates self-contained, platform-specific, Java application bundles. These bundles provide a simple solution to distribute your Java applications as end-users will rely on the platform's usual approaches to install them (ex. double click on a .exe file on Windows, ...), upgrade them, and un-install them.
 
 `jpackage` supports the following platform-specific bundle types:
 

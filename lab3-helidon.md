@@ -148,7 +148,7 @@ See [here](https://helidon.io/docs/v2/#/se/webserver/01_introduction) for more d
 
 ## Helidon CLI devloop
 
-You have just used the Helidon CLI to generate the skeleton of an application, and used Maven to build it. The application was then executed from the command line using the java launcher.
+You have just used the Helidon CLI to generate the skeleton of an application, and used Maven to build it. The application was then executed from the command line using the Java launcher.
 
 The Helidon CLI also enables a convenient development loop (aka 'devloop'). In addition to generating the skeleton of an application, the Helidon CLI can also build and run this application, it then monitors its source files, and restarts the application on every update.
 

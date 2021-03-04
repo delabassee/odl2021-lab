@@ -8,7 +8,7 @@ A text block is a multi-line string literal that avoids the need for most escape
 
 ## Text Blocks in more details
 
-Text blocks enable developers to easily embed string literals spanning multiple lines (ex. structured languages such as JSON, XML, etc.) into Java source code while preserving the formatting but also the Java code readability.
+Text blocks enable developers to easily embed string literals spanning multiple lines (ex. structured languages such as JSON, XML, etc.) into Java source code while preserving the formatting of the string literal and also keeping the Java code readable.
 
 For example, imagine that you have to embed in your Java code an HTML snippet that displays '_All I want to see is a "_'. Notice the double quotes at the end! Before Text Blocks, you would write something like this.
 
@@ -36,7 +36,7 @@ var test = "<ul id=\"test\">\n" +
 ```
 
 
-Not only such code is hard to write and hence error-prone, but it is also hard to read, and hence hard to maintain.
+Not only is such code hard to write, and hence error-prone, but it is also hard to read, and hence hard to maintain.
 
 Thanks to Text Blocks, it is now a lot easier! A text block is simply a [String](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/String.html) literal that can span over multiple lines. A Text Block is delimited with the new **triple-quote delimiter** (`"""`) instead of the traditional double-quote delimiter (`"`).
 
@@ -53,23 +53,24 @@ As you can see from the example below
 - a Text Block starts and ends with a triple-quote delimiter (`"""`)
 - the line after the opening triple-quote delimiter should be empty or blank
 - any double-quote embedded in the string shouldn't be escaped (!)
-- the string literal can span multiple lines without any additional escaping (\n)
+- the string literal can span multiple lines without any additional escaping (`\n`)
 - the original formatting is preserved, it is controlled by the closing delimiter
 - and last but not least, the code readability is greatly improved!
 
-To preserve formatting while improving code readability, Text Blocks differentiate __incidental white spaces__, from __essential white spaces__. Incidental white spaces are used to improve code readability, they will be stripped away automatically by the Java compiler.
+To preserve formatting while improving code readability, Text Blocks differentiate __incidental white spaces__, from __essential white spaces__. Incidental white spaces are used to improve source code readability, they will be stripped away automatically by the Java compiler.
 
-The following example is identical to the previous one but it doesn't use incidental white spaces, this impacts the code formating and hence its readability.
+The following code example is identical to the previous one but it doesn't use incidental white spaces. Incidental whitespace can be used to improve the readability of the source code, but doesn't impact how the Java compiler interprets the value of the Text Block.
+
 
 ```
-var element = """
-<ul id="example">
+var test = """
+<ul id="test">
    <li><a href="https://abc.org/">ABC</a></li>
    <li><a href="https://xyz.org/">XYZ</a></li>
 </ul>
 """; 
 ```
-The triple-quote closing delimiter defines how incidental white spaces are handled. Please check the resources at the end of the exercice for more details on those rules.
+The triple-quote closing delimiter defines how incidental white spaces are handled. Please check the resources at the end of the exercise for more details on those rules.
 
 ## Add Text Blocks support
 

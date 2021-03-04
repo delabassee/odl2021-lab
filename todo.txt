@@ -1,2 +1,15 @@
-* add Sealed Class constraints
-* Update Free tier URLs!
+
+* Finish Lab13 !!!
+
+* Update Free tier URLs!!!
+	oracle.com/DevLiveJava0323
+	oracle.com/DevLiveJava0325
+	oracle.com/DevLiveJava0330
+
+* Add Sealed Class constraints (Billy)
+
+* Update EA links (inc. javadoc)
+
+* Add higlight (Ashwin)
+
+* Surefire issue (Billy)

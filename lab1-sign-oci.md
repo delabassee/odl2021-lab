@@ -17,7 +17,7 @@ Oracle Cloud Free Tier allows you to sign up for an Oracle Cloud account which p
 
 ## Create Your Free Trial Account
 
-In this section, you will sign-up for a free tier OCI account. Fill out the registration form [here](https://bit.ly/DevNexus2021).
+In this section, you will sign-up for a free tier OCI account. Fill out the registration form [here](oracle.com/DevLiveJava0323).
 
 💡 The sign-up user interface might be slightly different than the user interface of this guide. It is anyway very intuitive. The key is to sign-up using the **same email address** as the used to register for this Hands-on-lab.
 

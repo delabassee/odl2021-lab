@@ -113,7 +113,7 @@ case MYSQL :
 
 Given there is no `break`, the "JAVA" case will "fall through" to the next case until it reaches a `break`. That explains why we see the "MySQL" for all speakers from the Java track. You can easily solve this bug by adding a `break` for the "JAVA" case. 
 
-The second issue is tied to the "default" case. Given that the `Track.java` enumeration has only 3 possibles values and that those 3 values are actually tested in the switch, there's no point in having a "default" case as it is unreachable. You can fix this by simply removing the "default" branch.
+The second issue is tied to the "default" case. Given that the `Track.java` enumeration has only 3 possibles values and that those 3 values are actually tested in the switch, there's no point in having a "default" case as it is unreachable. You can fix this by simply removing the "default" case.
 
 The last problem is tied to the fact that this code is quite repetitive and verbose (ex. we assign a different value to the `trackDetail` string in all the branches, etc.) and also quite error-prone (ex. you know what it's like to forget a `break`!).
 
@@ -174,7 +174,7 @@ var trackDetail = switch (speaker.track()) {
 ```
 ## Wrap-up
 
-In this exercise, you have used *Switch Expressions*, a standard feature since Java 14.
+In this exercise, you have used **Switch Expressions**, a standard feature since Java 14.
 
 Switch expressions complement nicely the traditional Swith statement by enabling to easily write less error-prone Switch cases. Moreover, the produced code is also more readable! For additional details, please check [JEP 361: Switch Expressions (Standard)](https://openjdk.java.net/jeps/361).
 

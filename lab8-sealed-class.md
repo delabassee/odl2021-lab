@@ -2,23 +2,36 @@
 
 ## Overview
 
-In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 397), a preview feature (2nd round in Java 16). This new feature enables to create restricted classes hierarchy. , i.e. restrict which other classes or interfaces may extend or implement them.
+In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 397), a preview feature (2nd round in Java 16). This new feature enables the ability to create restricted class hierarchy, i.e. restrict which other classes or interfaces may extend or implement them.
 
 💡 Despite its name, the **Sealed Classes** feature applies to both **classes** and **interfaces**.
 
 ## Restricted  Class Hierarchies
 
-In Java, a class hierarchy enables the reuse of code via inheritance: The methods of a superclass can be inherited (and thus reused) by many subclasses. However, the purpose of a class hierarchy is not always to reuse code. Sometimes, its purpose is to model the various possibilities that exist in a domain, such as the kinds of shapes supported by a graphics library or the kinds of loans supported by a financial application. When the class hierarchy is used in this way, restricting the set of subclasses can streamline the modeling, that is what Sealed Classes enable.
+In Java, a class hierarchy enables the reuse of code via inheritance: The methods of a superclass can be inherited (and thus reused) by many subclasses. However, the purpose of a class hierarchy is not always to reuse code. Sometimes, its purpose is to model the various possibilities that exist in a domain, such as the kinds of shapes supported by a graphics library or the kinds of loans supported by a financial application. When the class hierarchy is used in this way, restricting the set of subclasses can streamline the modeling.
 
 A Sealed Class (or interface) can be extended (or implemented) only by those classes (and interfaces) explicitly permitted to do so.
 
 * A new **`sealed` modifier** has been introduced to **seal** a class
 
-* A new **`permits` clause** is then used to explicitly **specify** the class(es) that is(are) permitted to extend the sealed class  
+* A new **`permits` clause** is then used to explicitly **specify** the class(es) that is(are) permitted to extend the sealed class 
+
+Additionally a sealed class imposes three constraints on its permitted subclasses (the classes specified by its `permits` clause):
+
+* The sealed class and its permitted subclasses must belong to the same module, and, if declared in an unnamed module, the same package.
+
+* Every permitted subclass must directly extend the sealed class.
+
+* Every permitted subclass must choose a modifier to describe how it continues the sealing initiated by its superclass:
+
+    * A permitted subclass may be declared final to prevent its part of the class hierarchy from being extended further.
+    * A permitted subclass may be declared sealed to allow its part of the hierarchy to be extended further than envisaged by its sealed superclass, but in a restricted fashion.
+    * A permitted subclass may be declared non-sealed so that its part of the hierarchy reverts to being open for extension by unknown subclasses. (A sealed class cannot prevent its permitted subclasses from doing this.)
+ 
 
 ## Your first Sealed Classes
 
-💡 "Sealed Classes" is a preview feature in JDK 16 so make sure that preview features are enabled both at compile time and run-time.
+💡 **Sealed Classes** is a preview feature in JDK 16 so make sure that preview features are enabled both at compile time and run-time.
 
 For the sake of this exercise, let us suppose that the conference application needs to deal with sessions of different types. 
 
@@ -29,7 +42,7 @@ Broadly speaking, the conference has the following sessions :
 	* **Lab**: a hands-on lab
 * **Keynote** session, a traditional general session
 
-All extends the **Session** abstract class
+All extend the **Session** abstract class
 
 1. Create a `session` directory (`mkdir -p src/main/java/conference/session/`) and create the abstract sealed `Session.java` superclass.
 

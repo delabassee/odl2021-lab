@@ -169,7 +169,7 @@ Finally, records can also implement interfaces, ex. `java.lang.Comparable`, `jav
 * the serialization relies only on the record state components
 * the de-serialization uses only the canonical constructor
 
-This is another benefit of records, serialization/deserialization is safe! That safety complements nicely the data-oriented nature of records.
+This is another benefit of records, serialization/deserialization is safe! That safety complements nicely with the data-oriented nature of records.
 
 
 ## A Speaker Record
@@ -280,7 +280,7 @@ Add the following Jackson dependency in the `pom.xml`
 </copy>
 ```
 
-💡 This lab uses the latest version of Helidon (2.2.1) which in turn uses Jackson v2.12, so you're good to go! If you happen to use an older Helidon version, you can manually bump the Jackson version by updating the application `pom.xml` as follow.
+💡 This lab uses the latest version of Helidon (2.2.1) which in turn uses Jackson v2.12, so you're good to go! If you happen to use an older Helidon version, you can manually bump the Jackson version by updating the application `pom.xml` as follows.
 
 
 ```
@@ -304,7 +304,7 @@ Add the following Jackson dependency in the `pom.xml`
 </copy>
 ```
 
-The last thing you need to do is instructing the application to use Jackson.
+The last thing you need to do is instruct the application to use Jackson.
 
 ```
 <copy>
@@ -320,7 +320,7 @@ with
 ```
 <copy>.addMediaSupport(JacksonSupport.create())</copy>
 ```
-and update the import's
+and update the imports
 
 ```
 <copy>
@@ -330,12 +330,12 @@ import io.helidon.media.jackson.JacksonSupport;
 
 Compile the application and test it again (ex. http://{public-ip-address}:8080/speakers), it now works!
 
-You can notice that using Records leads to a more concise, more readable code when it comes to model data aggregates! Moreover, more and more frameowrks are adding support (ex. Jackson). Overal, this leads to simpler and cleaner code. 
+You can notice that using Records leads to a more concise, more readable code when it comes to model data aggregates! Moreover, as more frameworks add support for Records, (ex. Jackson), this will lead to simpler and cleaner Java code.
 
 ## A Speaker Record with JSONP (optional)
 
 
-In the previous exercise, we have used Jackson for its ability to automatically marshall Java objects, including records instances, to equivalent JSON representations. Another approach would be to use the JSONP API to manually construct a JSON representation from a record. 
+In the previous exercise, we have used Jackson for its ability to automatically marshall Java objects, including Records instances, to equivalent JSON representations. Another approach would be to use the JSONP API to manually construct a JSON representation from a Record. 
 
 This can be done by adding the following `toJson` method to the `Speaker.java` record.
 
@@ -361,7 +361,7 @@ JsonObject toJson() {
 </copy>
 ```
 
-💡 Make sure to update the Record class's `import`'s accordingly.
+💡 Make sure to update the Record class' `import`'s accordingly.
 
 ```
 <copy>
@@ -372,7 +372,7 @@ import javax.json.JsonObject;
 
 and update the code to return a List of `JsonObject` instead of List of `Speaker`.	
 
-For example, update update the `getAll` method in the the `SpeakerService.java` class
+For example, update the `getAll` method in the the `SpeakerService.java` class
 
 ```
 <copy>
@@ -403,7 +403,7 @@ if (allSpeakers.size() > 0) {
 📝 Make sure to do this for all `SpeakerService.java` methods (`getByCompany`, `getByTrack`, `getSpeakersById`) as you just did for the `getAll` method.
 
 
-This approach, while more cumbersome, shows that methods can be added to customize records.
+This approach, while more cumbersome, shows that custom methods can be added to Records.
 
 
 ## Local Records (optional)
@@ -422,7 +422,7 @@ For this exercise, let's pretend that you want to return a simpler form of Speak
 nano src/main/java/conference/SpeakerService.java
 </copy>
 ```
-to include a local Record, i.e. within the body of the `getAll` method!
+to include a Local Record, i.e. within the body of the `getAll` method!
 ```
 <copy>
 record SpeakerSummary(String last, String first, String company) {}
@@ -488,9 +488,9 @@ List<Speaker> allSpeakers = speakers.stream()
 
 ## Wrap-up
 
-In this exercise, you have used **records**, a new feature that enables to easily create immutable data aggregates. The record feature went through 2 preview rounds (Java 14 & Java 15) and are slated to be made final and permanent in Java 16.
+In this exercise, you have used **Records**, a new feature for the easy creation of immutable data aggregates. The Record feature went through 2 preview rounds (Java 14 & Java 15) and was made made final and permanent in Java 16.
 
-For more details on records, please check the following resources.
+For more details on Records, please check the following resources.
 
 * [JEP 395: Records](https://openjdk.java.net/jeps/395)
 * [Java Feature Spotlight: Records](https://inside.java/2020/02/04/spotlightrecords/)
