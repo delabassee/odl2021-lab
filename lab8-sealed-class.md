@@ -2,7 +2,8 @@
 
 ## Overview
 
-In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 397), a preview feature (2nd round in Java 16). This new feature enables the ability to create restricted class hierarchy, i.e. restrict which other classes or interfaces may extend or implement them.
+In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 397), a preview feature (2nd round in Java 16). This new feature enables the ability to create restricted class hierarchy. That is a class or interface that can declaratively restrict which other classes or interfaces may extend or implement them.
+
 
 💡 Despite its name, the **Sealed Classes** feature applies to both **classes** and **interfaces**.
 

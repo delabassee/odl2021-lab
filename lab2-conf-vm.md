@@ -106,7 +106,10 @@ You can safely ignore the **Configure boot volume** section. Simply click **Crea
 
 ⚠️ Make sure to write down the **Public IP Address** of your instance as you will need it!
 
-Once your instance is up, you can connect to it! In a shell on your computer, use `ssh` to connect to the instance on OCI: `ssh {username}@{public_ip}`.
+**5. Connecting via SSH**
+
+Once your instance is up, you can connect to it using `ssh` : `ssh {username}@{public_ip}`.
+
 
 💡 If you are on Windows, check [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm#linux) how to use OpenSSH. 
 
