@@ -168,7 +168,7 @@ private static void writeMessageToSocket(SocketChannel socketChannel, String mes
 }
 </copy>
 ```
-The client can now leverage this method to send a few messages to the server, ex. by updating its `main` method as follow.
+The client can now use this method to send a few messages to the server, ex. by updating its `main` method as follow.
 
 
 ```java
