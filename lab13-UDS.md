@@ -222,7 +222,7 @@ public static void main(String[] args) throws IOException, InterruptedException 
 This snippet creates an infinite loop that checks every 100 ms whether a new message was written to the socket and, if so, outputs it.
 
 
-To test this, launch the server in one termainal (`java Server.java`), and the client in another termainal (`java Client.java`). The server should receive the message sent by the client.
+To test this, launch the server in one terminal (`java Server.java`), and the client in another termainal (`java Client.java`). The server should receive the message sent by the client.
 
 💡 Shutdown the server with CTRL-C.
 
