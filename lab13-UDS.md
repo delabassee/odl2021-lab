@@ -237,7 +237,7 @@ Compared to TCP/IP loopback connections, Unix domain sockets offer several advan
 * Access control is applied with file-based mechanisms, which are detailed, well understood, and enforced by the operating system.
 * Unix domain sockets have faster setup times and higher data throughput than TCP/IP loopback connections.
 
-💡 Unix domain sockets can be used to communicate between containers as long as the UDS socket is create on a shared volume.
+💡 Unix domain sockets can be used to communicate between containers as long as the UDS socket is created on a shared volume.
 
 ## Wrap-up
 
