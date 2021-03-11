@@ -8,7 +8,7 @@ This API provides blocking and multiplexed non-blocking access to sockets. Befor
 
 💡 Unix domain sockets are supported in Unix-based operating systems (Linux, macOS) and - despite their name - on Windows 10 and Windows Server 2019 too!
 
-## Unix Domain Socket in a nutshell
+## Unix Domain Socket in a Nutshell
 
 As mentioned, Unix domain sockets are based on path names, so the first thing we need is a path that is then turned into a Unix domain socket address. 
 
