@@ -224,7 +224,7 @@ This snippet creates an infinite loop that checks every 100 ms whether a new mes
 
 To test this, launch the server in one terminal (`java Server.java`), and the client in another termainal (`java Client.java`). The server should receive the message sent by the client.
 
-💡 Shutdown the server with CTRL-C.
+💡 Shutdown the server with CTRL+C.
 
 
 ## Real-life Complexities
