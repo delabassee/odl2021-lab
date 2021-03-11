@@ -12,4 +12,6 @@
 
 * Add higlight (Ashwin)
 
-* Surefire issue (Billy)
+* sed -i "s/$(echo -ne '\u200b')//g" file
+
+* Surefire issue (Billy) : OK
