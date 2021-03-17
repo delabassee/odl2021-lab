@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this 10-minutes lab, you will get some hands-on experience with the **pattern Matching for instanceof** feature previewed in Java 14 and Java 15, and slated to be made standard and permanent in Java 16. 
+In this 10-minutes lab, you will get some hands-on experience with the **pattern Matching for instanceof** feature previewed in Java 14 and Java 15, and made final and permanent in Java 16.
 
 Pattern matching allows common logic in a program, namely the conditional extraction of components from objects, to be expressed more concisely and safely. This new feature enhances the Java programming language with an initial form of pattern matching, i.e. **pattern matching for the instanceof operator**. 
 
@@ -212,7 +212,7 @@ curl {public_ip}:8080/sessions/detail/010
 
 ## Wrap-up
 
-In this exercise, you have used the **pattern matching for instanceof** feature, previewed in Java 14 and Java 15, and slated to be made standard and permanent in Java 16. 
+In this exercise, you have used the **pattern matching for instanceof** feature, previewed in Java 14 and Java 15, and has been made a standard and permanent feature in Java 16. 
 
 The **pattern matching for instanceof** feature unarguably simplifies the code but in this particular scenario, the '`if … else if …`' chain makes this code repetitive and potentially brittle! Wouldn't it be nice to use a `switch` instead of this '`if … else if …`' chain?  In fact, the **pattern matching for instanceof** feature along with the **Switch Expression** feature (see Lab 9), the traditional Switch statement, the **Records** feature (see Lab 7) and the **Sealed Class** feature (see Lab 8) will enable, in the near future, powerful pattern matching in the Java platform, including the ability to do pattern matching with Switch.
 

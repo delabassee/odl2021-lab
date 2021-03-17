@@ -103,7 +103,7 @@ As you can see, using `jlink` with Helidon is simple and straight forward!
 * [JEP 282: `jlink`](https://openjdk.java.net/jeps/282)
 * [Helidon SE — Custom Runtime Images with `jlink`](https://helidon.io/docs/v2/#/se/guides/37_jlink_image)
 * [Helidon Maven Plugin](https://github.com/oracle/helidon-build-tools/tree/master/helidon-maven-plugin#goal-jlink-image)
-* [Class Data Sharing](https://docs.oracle.com/en/java/javase/14/vm/class-data-sharing.html#GUID-7EAA3411-8CF0-4D19-BD05-DF5E1780AA91)
+* [Class Data Sharing](https://docs.oracle.com/en/java/javase/16/vm/class-data-sharing.html#GUID-7EAA3411-8CF0-4D19-BD05-DF5E1780AA91)
 
 
 

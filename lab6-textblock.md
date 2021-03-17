@@ -4,7 +4,7 @@
 
 In this 10-minutes lab, you will use **Text Blocks**, a new Java feature.
 
-A text block is a multi-line string literal that avoids the need for most escape sequences. It automatically formats the string predictably, and gives the developer control over format when desired. The Text Blocks feature has been previewed in Java 13 and Java 14 and is a permanent feature starting Java 15.
+A text block is a multi-line string literal that avoids the need for most escape sequences. It automatically formats the string predictably, and gives the developer control over format when desired. The Text Blocks feature has been previewed in Java 13 and Java 14 and is a permanent feature since Java 15.
 
 ## Text Blocks in more details
 
