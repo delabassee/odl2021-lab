@@ -30,7 +30,8 @@ PS: Do not forget that you now have access to the [Oracle Cloud Free Tier (Alway
 
 
 * [Download JDK 16](https://jdk.java.net/16/)
-* [JDK 16 release notes](http://jdk.java.net/16/release-notes)
+* [JDK 16 Documentation](https://docs.oracle.com/en/java/javase/16/)
+* [JDK 16 Release Notes](https://jdk.java.net/16/release-notes)
 * [Inside Java Podcast](https://inside.java/podcast)
 * [Helidon](https://helidon.io/#/)
 * [cloud.oracle.com](https://cloud.oracle.com)

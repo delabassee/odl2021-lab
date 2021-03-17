@@ -47,7 +47,7 @@ All extend the **Session** abstract class
 
 1. Create a `session` directory (`mkdir -p src/main/java/conference/session/`) and create the abstract sealed `Session.java` superclass.
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/session/Session.java
 </copy>
@@ -91,7 +91,7 @@ permits Keynote, Breakout {
 
 2. Now you need to create both `Keynote.java` and `Breakout.java` classes
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/session/Keynote.java
 </copy>
@@ -120,7 +120,7 @@ final public class Keynote extends Session {
 🔎 `Keynote.java` is **final**, it can't be extended.
 
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/session/Breakout.java
 </copy>
@@ -158,7 +158,7 @@ permits Lab, Lecture {
 
 3. Create the `Lecture.java` and `Lab.java` classes
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/session/Lecture.java
 </copy>
@@ -184,7 +184,7 @@ final public class Lecture extends Breakout {
 </copy>
 ```
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/session/Lab.java
 </copy>
@@ -215,7 +215,7 @@ final public class Lab extends Breakout {
 
 4. Create a fictional `AgendaRepository.java` class
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/AgendaRepository.java
 </copy>
@@ -268,7 +268,7 @@ public final class AgendaRepository {
 
 5. Create `AgendaService.java`
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/AgendaService.java
 </copy>
@@ -319,7 +319,7 @@ public class AgendaService implements Service {
 6. Update the `createRouting` method in `Main.java` to instantiate the AgendaService and register its handler under the "/sessions" path.
 
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/Main.java
 </copy>
@@ -327,12 +327,12 @@ nano src/main/java/conference/Main.java
 
 ```
 …
-<copy>AgendaService sessionsService = new AgendaService();</copy>
+AgendaService sessionsService = new AgendaService();
 
 …
 return Routing.builder()
       …
-      <copy>.register("/sessions", sessionsService)</copy>
+      .register("/sessions", sessionsService)
       .build();
 
 ```

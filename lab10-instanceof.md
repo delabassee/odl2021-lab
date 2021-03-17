@@ -37,7 +37,7 @@ if (obj instanceof String s) {
 
 💡 Make sure to checkout the lab10 branch as it introduces 2 new classes to the project: `AgendaRepository.java` and `AgendaService.java`
 
-```
+```nohighlight
 <copy>
 git checkout -f lab10
 </copy>
@@ -55,7 +55,7 @@ Let's pretend that the displayed details should vary based on the session type.
 
 Add the following `getSessionDetails` method to the "AgendaService".
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/AgendaService.java
 </copy>

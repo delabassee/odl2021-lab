@@ -15,7 +15,7 @@ This simple application is themed around 'conferences', it provides a simple RES
 
 The application source is hosted on GitHub, just clone its repository:
 
-```
+```nohighlight
 cd ~
 git clone https://github.com/delabassee/odl-java-hol.git
 cd odl-java-hol
@@ -36,7 +36,7 @@ This repository has several branches (`git branch -a`).&nbsp;
 
 Switch to the starting point
 
-```
+```nohighlight
 <copy>
 git checkout lab5
 </copy>
@@ -100,12 +100,12 @@ Here are a few tips that might be useful in the course of this Lab.
 
 * During this lab, you will only do simple Java coding so you won't use a Java IDE. Instead, you will use the versatile `nano` text editor. Here are some of its important key shortcuts.
 
-	* <kbd>[Control]</kbd> <kbd>[x]</kbd> : Exit
-	* <kbd>[Control]</kbd> <kbd>[o]</kbd> : Save
-	* <kbd>[Control]</kbd> <kbd>[k]</kbd> : Delete Line
-	* <kbd>[Control]</kbd> <kbd>[g]</kbd> : Help
-	* <kbd>[Control]</kbd> <kbd>[y]</kbd> : Page Up
-	* <kbd>[Control]</kbd> <kbd>[v]</kbd> : Page Down
+	* <kbd>[Control]</kbd> + <kbd>[x]</kbd> : Exit
+	* <kbd>[Control]</kbd> + <kbd>[o]</kbd> : Save
+	* <kbd>[Control]</kbd> + <kbd>[k]</kbd> : Delete Line
+	* <kbd>[Control]</kbd> + <kbd>[g]</kbd> : Help
+	* <kbd>[Control]</kbd> + <kbd>[y]</kbd> : Page Up
+	* <kbd>[Control]</kbd> + <kbd>[v]</kbd> : Page Down
 
 * It is recommended to use Firefox to test REST endpoints as it renders nicely the returned JSON payload. If you are comfortable with CLI, you can also use `curl` in combination with `jq` to format JSON responses.
 
@@ -119,7 +119,7 @@ Here are a few tips that might be useful in the course of this Lab.
 
 * If you are using the Helidon `devloop`, make sure to enable preview features!
 
-```
+```nohighlight
 <copy>
 helidon dev --app-jvm-args "--enable-preview"
 </copy>

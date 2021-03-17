@@ -76,7 +76,7 @@ The triple-quote closing delimiter defines how incidental white spaces are handl
 
 In the `Main.java` class, you can notice that the application uses Helidon's Web Server [Static Content support](https://helidon.io/docs/v2/#/se/webserver/06_static-content-support) to expose some static content.
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/Main.java
 </copy>
@@ -91,7 +91,7 @@ Routing.builder()
 
 This static content is exposed under the `/public` path, and is served from the `/public` directory in the `/resources` directory of the application. `index.html` is the default file served.
 
-```
+```nohighlight
 <copy>
 bat src/main/resources/public/index.html
 </copy>
@@ -114,7 +114,7 @@ To fix this, any HTTP request to the `/` path should be forwarded to the `/publi
 In the `createRouting` method, define a Text Block that embeds some HTML to trigger a client-side forward to the `/public` path.
 
 
-```
+```nohighlight
 <copy>
 nano src/main/java/conference/Main.java
 </copy>
@@ -243,7 +243,7 @@ message = """And what about this?""";
 
 In this exercise, you have used Text Blocks, a standard Java 15 feature, to easily embed HTML into Java code. 
 
-Simply put, Text Blocks enable developers to easily embed string literals spanning multiple lines into Java source code while preserving the original formatting but also Java code readability. Text blocks are handy to deal with structured languages (ex. XML, JSON, etc.) without having to worry about escaping special characters (ex. new line, double quotes) nor altering the original formatting. Finally, the power of the [String API](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/String.html) remains at our disposal with Text Blocks.
+Simply put, Text Blocks enable developers to easily embed string literals spanning multiple lines into Java source code while preserving the original formatting but also Java code readability. Text blocks are handy to deal with structured languages (ex. XML, JSON, etc.) without having to worry about escaping special characters (ex. new line, double quotes) nor altering the original formatting. Finally, the power of the [String API](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html) remains at our disposal with Text Blocks.
 
 Check the following resources for more details on Text Blocks.
 

@@ -57,7 +57,7 @@ Let's now try to grasp how things work by checking the sources.
 
 #### _Main_
 
-```
+```nohighlight
 <copy>
 bat src/main/java/com/devlive/Main.java
 </copy>
@@ -106,7 +106,7 @@ server.start()
 
 Let's now look at the 2nd class:
 
-```
+```nohighlight
 <copy>
 bat src/main/java/com/devlive/GreetService.java
 </copy>

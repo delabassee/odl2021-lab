@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this 10-minutes lab, you will use **Unix domain sockets**, an addition to the existing [SocketChannel](https://download.java.net/java/early_access/jdk16/docs/api/java.base/java/nio/channels/SocketChannel.html)/[ServerSocketChannel](https://download.java.net/java/early_access/jdk16/docs/api/java.base/java/nio/channels/ServerSocketChannel.html) API.
+In this 10-minutes lab, you will use **Unix domain sockets**, an addition to the existing [SocketChannel](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/nio/channels/SocketChannel.html)/[ServerSocketChannel](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/nio/channels/ServerSocketChannel.html) API.
 
 This API provides blocking and multiplexed non-blocking access to sockets. Before Java 16, this was limited to TCP/IP sockets - now it is also possible to access [Unix domain sockets](https://en.wikipedia.org/wiki/Unix_domain_socket). Contrary to traditional sockets, Unix domain sockets are addressed by filesystem path names and are used for inter-process communication on the same host.
 
@@ -30,8 +30,8 @@ SocketChannel channel = serverChannel.accept();
 
 On the client-side, we need to create a UDS socket channel that we can then use to connect to the UDS address. 
 
-```java-side
-// client
+```java
+// client-side
 SocketChannel channel = SocketChannel.open(StandardProtocolFamily.UNIX);
 channel.connect(address);
 ```
@@ -43,13 +43,13 @@ Once the connection is established, the client and the server can send and recei
 
 Create a directory.
 
-```
+```nohighlight
 <copy>mkdir ~/uds && cd ~/uds</copy>
 ```
 
 Create the server
 
-```
+```nohighlight
 <copy>nano Server.java</copy>
 ```
 
@@ -87,7 +87,7 @@ public class Server {
 
 Similarly, create the client
 
-```
+```nohighlight
 <copy>nano Client.java</copy>
 ```
 
@@ -129,7 +129,7 @@ $ java Server.java
 As you can see, the server launches and then waits for an incomming connection.
 Now launch the client in the second terminal.
 
-```
+```nohighlight
 <copy>
 java Client.java
 </copy>
@@ -141,13 +141,14 @@ Let's fix that.
 
 ## Exchanging Payload
 
-The `SocketChannel` and `ServerSocketChannel` classes have existed since Java 1.4.  The type of sockets used makes no difference in how payloads are exchanged between them. That means the following code is not specific to Unix domain sockets and works the same with TCP/IP.
+
+The [`SocketChannel`](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/nio/channels/SocketChannel.html) and [`ServerSocketChannel`](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/nio/channels/ServerSocketChannel.html) classes have existed since Java 1.4.  The type of sockets used makes no difference in how payloads are exchanged between them. That means the following code is not specific to Unix domain sockets and works the same with TCP/IP.
 
 Once the client has established the connection, both the server and the client can send and receive payload, i.e. the channel is bi-directional. For simplicity's sake, we will simply send some payload from the client to the server.
 
 ### Sending Payload
 
-For the client to send payload, we need to create a `ByteBuffer`, fill it with the payload's bytes, flip it for sending, and then write it to the channel.
+For the client to send payload, we need to create a [`ByteBuffer`](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/nio/ByteBuffer.html), fill it with the payload's bytes, flip it for sending, and then write it to the channel.
 
 Add the following `writeMessageToSocket` method to the Client.java class.
 
@@ -224,7 +225,7 @@ This snippet creates an infinite loop that checks every 100 ms whether a new mes
 
 To test this, launch the server in one terminal (`java Server.java`), and the client in another termainal (`java Client.java`). The server should receive the message sent by the client.
 
-💡 Shutdown the server with CTRL+C.
+💡 Shutdown the server with [CTRL]+[C].
 
 
 ## Real-life Complexities
@@ -248,7 +249,6 @@ Unix-domain sockets are both more secure and more efficient than TCP/IP loopback
 **More ressources**
 
 * [Unix domain socket channels overview](https://inside.java/2021/02/03/jep380-unix-domain-sockets-channels/)
-
 * [JEP 380: Unix Domain Socket Channels](https://openjdk.java.net/jeps/380)
 
 

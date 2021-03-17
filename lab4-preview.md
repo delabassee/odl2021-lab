@@ -17,7 +17,7 @@ The Preview Feature mechanism enables to add non-final, fully specified, and imp
 
 In a new directory, create a simple _Vehicle.java_ abstract class with 2 auxiliary classes in it, _Car_ and _Bike_:
 
-```
+```nohighlight
 <copy>
 nano Vehicle.java
 </copy>
@@ -43,7 +43,7 @@ final class Bike extends Vehicle {
 
 2. Compile it
 
-```
+```nohighlight
 <copy>
 javac Vehicle.java
 </copy>
@@ -54,7 +54,7 @@ javac Vehicle.java
 
  This error simply informs you that you are trying to use the Sealed class feature which is a preview feature in Java 16, and that those are disabled by default. To use preview features, you need to explicitly enable them, at compile-time, using the `--enable-preview` flag. Note that, you also need to confirm to the Java compiler which version of the Preview Feature you are using (ex. using the `--release` flag). 
 
-```
+```nohighlight
 <copy>
 javac --enable-preview --release 16 Vehicle.java
 </copy>
@@ -68,7 +68,7 @@ The compilation now succeeds. Notice that you are still warned that preview feat
 
 To run code that uses Preview Feature, you would face the same safeguard as Preview Features are also disabled at runtime! To be used, they should be explicitly enabled using the `--enable-preview` flag. The difference is that at runtime, you don't need to use a flag to confirm the version that you are using.
 
-```
+```nohighlight
 java --enable-preview SomePreviewTest
 ```
 
@@ -80,29 +80,29 @@ Likewise, to use a Preview Feature in Helidon, those should be enabled at both c
 
 #### Compile-time configuration
 
-In an Helidon project's `pom.xml`, configure the Java compiler plugin to Java 16 **and** to enable Preview Features.
+In an Helidon project's `pom.xml`, configure, in the `<plugins>` section, the Java compiler plugin to Java 16 **and** to enable Preview Features.
 
-```xml
+```
 <copy>
-<plugins>
-   …
-   <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.8.0</version>
-      <configuration>
-        <release>16</release>
-        <compilerArgs>--enable-preview</compilerArgs>
-      </configuration>
-   </plugin>
-</plugins>
+<plugin>
+   <groupId>org.apache.maven.plugins</groupId>
+   <artifactId>maven-compiler-plugin</artifactId>
+   <version>3.8.0</version>
+   <configuration>
+       <release>16</release>
+       <compilerArgs>--enable-preview</compilerArgs>
+   </configuration>
+</plugin>
 </copy>
 ```
+
+
+
 #### Runtime configuration
 
 To run the application, use the following command.
 
-```
+```nohighlight
 <copy>
 java --enable-preview -jar target/myapp.jar
 </copy>
@@ -110,7 +110,7 @@ java --enable-preview -jar target/myapp.jar
 
 Similarly, to use Preview Features via the Helidon CLI 'devloop', you need to pass the same `--enable-preview` argument to the JVM running the application:
 
-```
+```nohighlight
 <copy>
 helidon dev --app-jvm-args "--enable-preview"
 </copy>

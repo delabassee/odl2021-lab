@@ -78,7 +78,7 @@ Producing the bundle will take some times. In the meantime, let's look at the us
 
 After ~75 seconds, your `rpm` bundle will be generated.
 
-```
+```nohighlight
 <copy>
 ls -la simple-app-1.0-1.x86_64.rpm
 </copy>
@@ -91,7 +91,7 @@ You can now use `rpm` as usual...
 
 * Install the application 
 
-```
+```nohighlight
 <copy>
 sudo rpm -i simple-app-1.0-1.x86_64.rpm
 </copy>
@@ -99,7 +99,7 @@ sudo rpm -i simple-app-1.0-1.x86_64.rpm
 
 * Check that your application is installed  
 
-```
+```nohighlight
 <copy>
 rpm -qa | grep simple-app
 </copy>
@@ -107,7 +107,7 @@ rpm -qa | grep simple-app
 
 * Get additional details about your installed application 
 
-```
+```nohighlight
 <copy>
 rpm -qi simple-app-1.0-1.x86_64
 </copy>
@@ -134,7 +134,7 @@ Description : simple jpackage test
 
 * Invoke the application launcher
 
-```
+```nohighlight
 <copy>
 /opt/simple-app/bin/simple-app
 </copy>
@@ -142,7 +142,7 @@ Description : simple jpackage test
 
 * Remove the application
 
-```
+```nohighlight
 <copy>
 sudo rpm -e simple-app-1.0-1.x86_64
 </copy>
@@ -154,7 +154,7 @@ sudo rpm -e simple-app-1.0-1.x86_64
 The **`jpackage`** tool creates self-contained, platform-specific, Java application bundles.
 
 
-This is a trivial example. `jpackage` offers many more options such as the ability to create a bundle based on a modularized Java application, let the user customize the installation (ex. where to install the application, ...), etc. See [JEP 392: Packaging Tool](https://openjdk.java.net/jeps/392) for additional details.
+This is a trivial example. `jpackage` offers many more options such as the ability to create a bundle based on a modularized Java application, let the user customize the installation (ex. where to install the application, ...), etc. For more details, please check the [Packaging Tool User's Guide](https://docs.oracle.com/en/java/javase/16/jpackage/packaging-overview.html#GUID-C1027043-587D-418D-8188-EF8F44A4C06A) and [JEP 392: Packaging Tool](https://openjdk.java.net/jeps/392).
 
 💡 It is also possible to pass argument(s) to execute the application, ex. to enable the application to use preview-features. 
 
