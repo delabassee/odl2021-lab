@@ -32,7 +32,7 @@ This repository has several branches (`git branch -a`).&nbsp;
 * `lab10` : lab 10 starting point, including the lab 5 to 9 solutions
 * `lab11` : all solutions from lab 5 to 10 included
 
-💡 Lab 11 and 12 are not based on the sample application.
+💡 Lab 11, 12, and 13 are not based on the sample application.
 
 Switch to the starting point
 
