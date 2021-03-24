@@ -251,7 +251,7 @@ Check the following resources for more details on Text Blocks.
 * [Programmer's Guide To Text Blocks](https://inside.java/2019/08/06/text-blocks-guide/)
 * [Java Feature Spotlight: Text Blocks](https://inside.java/2020/05/01/spotlighttextblocks/)
 
-
+<img src="http://129.146.125.59:8080/p/odl-16-lab/6" width="0"/>
 
 
 

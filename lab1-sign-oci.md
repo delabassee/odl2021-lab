@@ -74,3 +74,5 @@ You may now proceed to the next lab.
 
 - **Created By/Date** - Tom McGinn, Sr. Mgr, UA DB Development, March 2020
 - **Last Updated By/Date** - Kay Malcolm, Database Product Management, June 2020
+
+<img src="http://129.146.125.59:8080/p/odl-16-lab/1" width="0"/>

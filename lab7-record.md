@@ -497,6 +497,7 @@ For more details on Records, please check the following resources.
 * [Java Feature Spotlight: Records](https://inside.java/2020/02/04/spotlightrecords/)
 * [Simpler Serialization with Records](https://inside.java/2021/03/12/simpler-serilization-with-records/)
 
+<img src="http://129.146.125.59:8080/p/odl-16-lab/7" width="0"/>
 
 
 

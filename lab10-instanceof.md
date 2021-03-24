@@ -236,3 +236,5 @@ The **pattern matching for instanceof** feature supports one kind of pattern (ty
 * [Pattern Matching for instanceof JEP](https://openjdk.java.net/jeps/394)
 * [Java Feature Spotlight: Pattern Matching](https://www.infoq.com/articles/java-pattern-matching/)
 * [Pattern Matching in the Java Object Model](https://github.com/openjdk/amber-docs/blob/master/site/design-notes/pattern-match-object-model.md)
+
+<img src="http://129.146.125.59:8080/p/odl-16-lab/10" width="0"/>

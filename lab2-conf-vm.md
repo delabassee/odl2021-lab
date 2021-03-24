@@ -156,4 +156,6 @@ Once the script has been executed, you can test your instance by issuing, for ex
 
 Congratulations, everything is now correctly set-up! You can proceed to the next lab…
 
+<img src="http://129.146.125.59:8080/p/odl-16-lab/2" width="0"/>
+
 

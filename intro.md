@@ -23,3 +23,6 @@ You will use Helidon as it is easy, simple, and fast but obviously, all the Java
  - Author: [David Delabassee](https://delabassee.com)
  - Contributors: Ewan Slater, Denys Makogon, Nicolai Parlog, Billy Korando
  - Last updated By David Delabassee, Mar 24 2021
+
+<img src="http://129.146.125.59:8080/p/odl-16-lab/0" width="0"/>
+

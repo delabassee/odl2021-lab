@@ -160,7 +160,7 @@ This is a trivial example. `jpackage` offers many more options such as the abili
 
 One thing you can notice is that the size of the final bundle is relatively big, i.e. ~135 MB for this example. This is because the bundle includes the Java application, its dependencies, but also a Java runtime! That means that to run the application, the end-user will only need the application bundle and nothing else! By default, `jpackage` will pick up the machine's Java runtime but it is possible to specify a different Java runtime. For example, you can use `jpackage` (JDK 16) to create a bundle that will include a JDK 11 based Java runtime. To work around the Java runtime image size issue, `jpackage` can leverage `jlink` to create a custom Java runtime that will only include the modules required to run the application. This will greatly reduce the size of the final bundle. The next Lab will give an overview of `jlink`.
 
-
+<img src="http://129.146.125.59:8080/p/odl-16-lab/11" width="0"/>
 
 
 
