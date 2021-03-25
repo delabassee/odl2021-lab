@@ -26,5 +26,6 @@ You will use Helidon as it is easy, simple, and fast but obviously, all the Java
 
 <div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/0"></span></div>
 
+<div style="display: none;"><span><img src="http://129.146.125.59:8080/p/odl-16-lab/TEST-HTTP"></span></div>
 
 
