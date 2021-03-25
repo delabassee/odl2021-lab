@@ -1,5 +1,7 @@
 # Lab 8: Sealed Classes
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/8"></span></div>
+
 ## Overview
 
 In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 397), a preview feature (2nd round in Java 16). This new feature enables the ability to create restricted class hierarchy. That is a class or interface that can declaratively restrict which other classes or interfaces may extend or implement them.
@@ -350,7 +352,6 @@ In this exercise, you have used **Sealed Classes**. Sealed Classes is a new feat
 
 For more details, please check [JEP 397: Sealed Classes (2nd Preview)](https://openjdk.java.net/jeps/397) and the following [Java Feature Spotlight: Sealed Classes](https://www.infoq.com/articles/java-sealed-classes/) article.
 
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/8"></span></div>
 
  
 

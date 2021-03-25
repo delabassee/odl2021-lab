@@ -1,5 +1,7 @@
 # Lab 4: Java SE Preview Features
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/4"></span></div>
+
 ## Overview
 
 
@@ -133,5 +135,4 @@ In summary, the **Preview Feature** mechanism:
 <br>
 💡 Java 16 includes Sealed Classes (JEP 397 - Second Preview), a **Preview Feature** that will be discussed in an upcoming section.
 
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/4"></span></div>
  

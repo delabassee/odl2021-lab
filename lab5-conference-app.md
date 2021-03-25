@@ -1,5 +1,7 @@
 # Lab 5: The Sample Application
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/5"></span></div>
+
 ## Overview 
 
 
@@ -124,5 +126,3 @@ Here are a few tips that might be useful in the course of this Lab.
 helidon dev --app-jvm-args "--enable-preview"
 </copy>
 ```
-
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/5"></span></div>

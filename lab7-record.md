@@ -1,5 +1,7 @@
 # Lab 7: Records
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/7"></span></div>
+
 ## Overview
 
 In this 12-minute lab, you will use **Records**, a new Java language feature that went through 2 preview rounds (JDK 14, JDK 15) before being made final and permanent in Java 16.
@@ -497,7 +499,6 @@ For more details on Records, please check the following resources.
 * [Java Feature Spotlight: Records](https://inside.java/2020/02/04/spotlightrecords/)
 * [Simpler Serialization with Records](https://inside.java/2021/03/12/simpler-serilization-with-records/)
 
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/7"></span></div>
 
 
 

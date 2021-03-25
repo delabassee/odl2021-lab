@@ -1,5 +1,7 @@
 # Lab 10: Pattern Matching for instanceof
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/10"></span></div>
+
 ## Overview
 
 In this 10-minutes lab, you will get some hands-on experience with the **pattern Matching for instanceof** feature previewed in Java 14 and Java 15, and made final and permanent in Java 16.
@@ -237,5 +239,4 @@ The **pattern matching for instanceof** feature supports one kind of pattern (ty
 * [Java Feature Spotlight: Pattern Matching](https://www.infoq.com/articles/java-pattern-matching/)
 * [Pattern Matching in the Java Object Model](https://github.com/openjdk/amber-docs/blob/master/site/design-notes/pattern-match-object-model.md)
 
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/10"></span></div>
 

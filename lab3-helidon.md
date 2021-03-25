@@ -1,5 +1,7 @@
 # Lab 3: Exploring Helidon
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/4"></span></div>
+
 ## Overview
 
 In this 5-minutes lab, you will create a simple Microservices exposing a REST endpoint using Helidon SE. The goal is to have some initial exposure to Helidon, gain some high-level understandings of Helidon and its development workflow.
@@ -166,5 +168,3 @@ To use the 'devloop' approach, simply go in the project directory and run the '`
 This section gave you some initial exposure to Helidon, just enough to use Helidon in the context of this lab. Do keep in mind that only a small fraction of Helidon's features will be used and that all Java features presented during this lab apply to all Java-based frameworks and programs.
 
 For more information on Helidon, please check [https://helidon.io/](https://helidon.io/).
-
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/4"></span></div>

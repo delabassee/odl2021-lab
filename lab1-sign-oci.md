@@ -1,5 +1,7 @@
 # Lab 1: Sign Up for Free OCI Trial
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/1"></span></div>
+
 ## Overview
 
 This 5-minute lab walks you through the steps of getting an Oracle Cloud Free Tier account and signing in.  
@@ -74,6 +76,4 @@ You may now proceed to the next lab.
 
 - **Created By/Date** - Tom McGinn, Sr. Mgr, UA DB Development, March 2020
 - **Last Updated By/Date** - Kay Malcolm, Database Product Management, June 2020
-
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/1"></span></div>
 

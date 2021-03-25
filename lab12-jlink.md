@@ -1,5 +1,7 @@
 # Lab 12: jlink
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/12"></span></div>
+
 ## Overview
 
 This 5-minute optional lab will show you how **`jlink`** can greatly improve the size of a Java runtime image.
@@ -105,6 +107,5 @@ As you can see, using `jlink` with Helidon is simple and straight forward!
 * [Helidon Maven Plugin](https://github.com/oracle/helidon-build-tools/tree/master/helidon-maven-plugin#goal-jlink-image)
 * [Class Data Sharing](https://docs.oracle.com/en/java/javase/16/vm/class-data-sharing.html#GUID-7EAA3411-8CF0-4D19-BD05-DF5E1780AA91)
 
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/12"></span></div>
 
  
