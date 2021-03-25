@@ -1,6 +1,6 @@
 # Lab 11: jpackage
 
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/11"></span></div>
+<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/11"></span></div>
 
 ## Overview
 
