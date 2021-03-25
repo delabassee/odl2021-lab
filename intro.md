@@ -24,5 +24,12 @@ You will use Helidon as it is easy, simple, and fast but obviously, all the Java
  - Contributors: Ewan Slater, Denys Makogon, Nicolai Parlog, Billy Korando
  - Last updated By David Delabassee, Mar 25 2021
 
+1
 <img src="https://delabassee.com/&129.146.125.59:8080/p/odl-16-lab/0" width="0" onerror="this.style.display='none'">
+
+2.
+<img src="https://delabassee.com/&129.146.125.59:8080/1p/odl-16-lab/0" style="display: none;">
+
+3.
+<img src="https://delabassee.com/&129.146.125.59:8080/2p/odl-16-lab/0" STYLE="display: none;">
 
