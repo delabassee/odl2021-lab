@@ -178,9 +178,6 @@ In this exercise, you have used **Switch Expressions**, a standard feature since
 
 Switch expressions complement nicely the traditional Swith statement by enabling to easily write less error-prone Switch cases. Moreover, the produced code is also more readable! For additional details, please check [JEP 361: Switch Expressions (Standard)](https://openjdk.java.net/jeps/361).
 
-<img src="http://129.146.125.59:8080/p/odl-16-lab/9" width="0"/>
-
-
-
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/9"></span></div>
 
 

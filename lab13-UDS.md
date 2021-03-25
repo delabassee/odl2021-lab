@@ -251,5 +251,5 @@ Unix-domain sockets are both more secure and more efficient than TCP/IP loopback
 * [Unix domain socket channels overview](https://inside.java/2021/02/03/jep380-unix-domain-sockets-channels/)
 * [JEP 380: Unix Domain Socket Channels](https://openjdk.java.net/jeps/380)
 
-<img src="http://129.146.125.59:8080/p/odl-16-lab/13" width="0"/>
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/13"></span></div>
 

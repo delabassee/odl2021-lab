@@ -167,4 +167,4 @@ This section gave you some initial exposure to Helidon, just enough to use Helid
 
 For more information on Helidon, please check [https://helidon.io/](https://helidon.io/).
 
-<img src="http://129.146.125.59:8080/p/odl-16-lab/3" width="0"/>
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/4"></span></div>

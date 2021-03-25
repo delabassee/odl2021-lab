@@ -37,7 +37,8 @@ PS: Do not forget that you now have access to the [Oracle Cloud Free Tier (Alway
 * [cloud.oracle.com](https://cloud.oracle.com)
 * [Oracle Cloud Infrastructure Documentation](https://docs.oracle.com/en-us/iaas/Content/home.htm)
 
-<img src="http://129.146.125.59:8080/p/odl-16-lab/end" width="0"/>
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/end"></span></div>
+
 
 
 
