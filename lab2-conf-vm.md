@@ -1,5 +1,7 @@
 # Lab 2: Setup your Oracle Cloud environment
 
+<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/2"></span></div>
+
 ## Overview
 
 
@@ -155,6 +157,4 @@ The script should take around 100~120 seconds. In the meantime, you can check wh
 Once the script has been executed, you can test your instance by issuing, for example, `java -version`.
 
 Congratulations, everything is now correctly set-up! You can proceed to the next lab…
-
-<div style="display: none;"><span><img src="https://129.146.125.59:8080/p/odl-16-lab/2"></span></div>
 
