@@ -1,8 +1,8 @@
-## Hands-On Lab: Explore Modern Java Features on OCI
+## Hands-On Lab: Explore the New Features in Java 17
 
-*ODL Hands-on Lab - March 2021*
+*ODL Hands-on Lab - Sept 2021*
 
-https://developer.oracle.com/developer-live/java-innovations/
+https://developer.oracle.com/developer-live/java-innovations-sep-2021
 
 http://delabassee.com/lab/
 
