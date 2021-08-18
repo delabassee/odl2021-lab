@@ -7,7 +7,7 @@
 
 This 10-minute lab will introduce you to the **Switch Expression** feature, a standard and permanent feature since Java 14. 
 
-The **Switch Expression** augments the traditional Switch Statement to address some of its irregularities and annoyances including the well known 'fall through' problem, the support for multiple constants per case, the ability to enforce exhaustiveness, an improved scoping, etc.
+The **Switch Expression** augments the traditional Switch Statement to address some of its irregularities and annoyances including the well known 'fall through' problem, the support for multiple constants per case, the ability to detect exhaustiveness without a default label, an improved scoping, etc.
 
 ## Switch Expressions in more details
 
@@ -21,7 +21,7 @@ int numLetters = switch (day) {
     case WEDNESDAY              -> 9;
 };
 ```
-The Switch Expression also introduces a new `yield` statement to yield such value. And contrary to Switch Statement, exhaustiveness is enforced in Switch Expression, i.e. for all possible values, there must be a matching switch label. For additional details on Switch Expressions, please check [Switch Expressions (JEP 361)](https://openjdk.java.net/jeps/361).
+The Switch Expression also introduces a new `yield` statement to yield such value. And contrary to Switch Statement, exhaustiveness can be detected, removing the need for a default label. For additional details on Switch Expressions, please check [Switch Expressions (JEP 361)](https://openjdk.java.net/jeps/361).
 
 💡 Given that the Switch Expression feature is a standard feature since Java 14, it is not necessary to use the `enable-preview` flags to use this feature. Do note that the Conference application still requires those flags as it uses some preview features.
 
@@ -138,7 +138,7 @@ private String getTrackDetail(Speaker speaker) {
 
 A few things to note:
 
-* Exhaustiveness is enforced, i.e. all possible track values are tested. To confirm this, simply remove one of the cases, you will notice that the compiler will complain with the "The switch expression does not cover all possible input values" error. You can solve this by either making sure all the cases are covered or by introducing a "default" case. 
+* Exhaustiveness is detected without the default label, i.e. all possible track values are tested. To confirm this, simply remove one of the cases, you will notice that the compiler will complain with the "The switch expression does not cover all possible input values" error. You can solve this by either making sure all the cases are covered or by introducing a "default" case. 
 
 * Values produced by Switch Expression have a common type.
 
@@ -178,6 +178,8 @@ var trackDetail = switch (speaker.track()) {
 
 In this exercise, you have used **Switch Expressions**, a standard feature since Java 14.
 
-Switch expressions complement nicely the traditional Swith statement by enabling to easily write less error-prone Switch cases. Moreover, the produced code is also more readable! For additional details, please check [JEP 361: Switch Expressions (Standard)](https://openjdk.java.net/jeps/361).
+Switch expressions complement nicely the traditional Swith statement by enabling to easily write less error-prone Switch cases. Moreover, the produced code is also more readable! 
 
+For additional details, please check [JEP 361: Switch Expressions (Standard)](https://openjdk.java.net/jeps/361).
 
+You can also check the [JEP Café Episod #03](https://youtu.be/652kheEraHQ). 
