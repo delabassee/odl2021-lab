@@ -1,4 +1,4 @@
-# Lab 10: Pattern Matching for instanceof
+# Pattern Matching for instanceof
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/10"></span></div>
 

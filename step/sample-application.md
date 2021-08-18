@@ -1,4 +1,4 @@
-# Lab 5: The Sample Application
+# The Sample Application
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/5"></span></div>
 

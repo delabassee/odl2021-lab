@@ -1,4 +1,4 @@
-# Lab 8: Sealed Classes
+# Sealed Classes
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/8"></span></div>
 

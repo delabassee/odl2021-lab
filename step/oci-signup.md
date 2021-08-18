@@ -1,4 +1,4 @@
-# Lab 1: Sign Up for Free OCI Trial
+# Sign Up for Free OCI Trial
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/1"></span></div>
 

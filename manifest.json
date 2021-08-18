@@ -11,67 +11,82 @@
             "description": "Login to Oracle Cloud",
             "publisheddate": "03/10/2020",
             "contentid": "12nnnn",
-            "filename":"lab1-sign-oci.md"
+            "filename":"step/oci-signup.md"
         },
         {
             "title": "Lab 2: Setup your Oracle Cloud environment",
             "publisheddate": "07/30/2020",
-            "filename": "lab2-conf-vm.md"
+            "filename": "step/env-setup.md"
         },
         {
             "title": "Lab 3: Exploring Helidon",
             "publisheddate": "07/30/2020",
-            "filename": "lab3-helidon.md"
+            "filename": "step/explore-helidon.md"
         },
         {
             "title": "Lab 4: Java SE Preview Features",
             "publisheddate": "07/30/2020",
-            "filename": "lab4-preview.md"
+            "filename": "step/preview-features.md"
         },
         {
             "title": "Lab 5: The Sample Application",
             "publisheddate": "07/30/2020",
-            "filename": "lab5-conference-app.md"
+            "filename": "step/sample-application.md"
         },
         {
             "title": "Lab 6: Text Blocks",
             "publisheddate": "07/30/2020",
-            "filename": "lab6-textblock.md"
+            "filename": "step/TextBlocks.md"
         },
         {
             "title": "Lab 7: Records",
             "publisheddate": "07/30/2020",
-            "filename": "lab7-record.md"
+            "filename": "step/records.md"
         },
         {
             "title": "Lab 8: Sealed Classes",
             "publisheddate": "07/30/2020",
-            "filename": "lab8-sealed-class.md"
+            "filename": "step/sealed-classes.md"
         },
         {
             "title": "Lab 9: Switch Expressions",
             "publisheddate": "07/30/2020",
-             "filename": "lab9-switch-expression.md"
+             "filename": "step/switch-expression.md"
         },
         {
-            "title": "Lab 10: Pattern Matching for instanceof",
+            "title": "Lab 10: Pattern Matching",
             "publisheddate": "07/30/2020",
-             "filename": "lab10-instanceof.md"
+             "filename": "step/pattern-matching.md"
         },
         {
-            "title": "Lab 11: jpackage",
-            "publisheddate": "07/30/2020",
-             "filename": "lab11-jpackage.md"
-        },
-        {
-            "title": "Lab 12: jlink",
-            "publisheddate": "02/01/2021",
-             "filename": "lab12-jlink.md"
-        },
-        {
-            "title": "Lab 13: Unix Domain Sockets",
+            "title": "Lab 11: Unix Domain Sockets",
             "publisheddate": "03/03/2021",
-             "filename": "lab13-UDS.md"
+             "filename": "step/UDS.md"
+        },
+        {
+            "title": "Lab 12: Serialization",
+            "publisheddate": "07/30/2020",
+             "filename": "step/serialization.md"
+        },
+        {
+            "title": "Lab 13: Strongly Encapsulate JDK internals",
+            "publisheddate": "07/30/2020",
+             "filename": "step/strong-encapsulation.md"
+        },
+        {
+            "title": "Lab 14: Enhanced Pseudo-Random Number Generators",
+            "publisheddate": "07/30/2020",
+             "filename": "step/pseudo-random-generator.md"
+        },
+        {
+            "title": "Bonus: jpackage",
+            "publisheddate": "07/30/2020",
+             "filename": "step/bonus-jpackage.md"
+        },
+        {
+            "title": "Bonus: jlink",
+            "publisheddate": "02/01/2021",
+             "filename": "step/bonus-jlink.md"
         },
         {
             "title": "Wrap-up",

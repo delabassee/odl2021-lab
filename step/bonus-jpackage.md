@@ -1,4 +1,4 @@
-# Lab 11: jpackage
+# jpackage
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/11"></span></div>
 

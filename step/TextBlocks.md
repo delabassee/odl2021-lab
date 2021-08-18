@@ -1,4 +1,4 @@
-# Lab 6: Text Blocks
+# Text Blocks
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/6"></span></div>
 

@@ -1,6 +1,4 @@
-# Lab 12: jlink
-
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/12"></span></div>
+# jlink
 
 ## Overview
 

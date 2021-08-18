@@ -1,4 +1,4 @@
-# Lab 2: Setup your Oracle Cloud environment
+# Setup your Oracle Cloud environment
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/2"></span></div>
 

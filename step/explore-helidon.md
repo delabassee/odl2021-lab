@@ -1,4 +1,4 @@
-# Lab 3: Exploring Helidon
+# Exploring Helidon
 
 <div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/4"></span></div>
 
