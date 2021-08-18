@@ -242,7 +242,7 @@ var speaker =
    switch(s) {
       case Keynote k -> speakers.getById(k.getKeynoteSpeaker());
       case Lecture l -> speakers.getById(l.getSpeaker());
-      case Lab l     ->  speakers.getById(l.getSpeaker());
+      case Lab l     -> speakers.getById(l.getSpeaker());
    }
 ```
 
@@ -257,6 +257,27 @@ In its current version, the switch expression accepts the following for the case
 
 Pattern matching for switch expressions adds the possibility to use type patterns for the case labels.
 
+### Future Directions for Pattern Matching
+
+Pattern matching can be used in conjunction with deconstruction. Because the compiler knows that a record is built on its component, it can use this information to deconstruct a record and expose its internal state directly. This could make the following code possible in the future: 
+
+```
+record Rectangle(int width, int height) {}
+
+// o is any variable
+if (o instanceof Rectangle(int width, int height) {
+   int surface = width*height;
+}
+```
+
+Introducing deconstruction through factory methods could bring more possibilities. Suppose you have a map and need to extract the value bound to the key "name". You could write it in this way:
+
+```
+Map<String, String> map = ...; // any map
+if (map instanceof Map.withMapping("name", String name)) {
+   // you can use name in this block of code
+}
+```
 
 ## Wrap-up
 
