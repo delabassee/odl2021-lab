@@ -211,25 +211,79 @@ curl {public_ip}:8080/sessions/detail/001
 curl {public_ip}:8080/sessions/detail/010
 ```
 
+## Understanding Pattern Matching
+
+Pattern is a general concept than can be used in other places than `instanceof`. If you want to learn more about pattern matching and provide feedback, then you need to visit the [Amber project page](https://openjdk.java.net/projects/amber/). The Amber project page is the one-stop page for everything related to pattern matching in the Java language.
+
+### Pattern Matching for Instanceof
+
+Let us take another look at the expression `s instanceof Keynote k`. It is composed of three elements. 
+
+The _matched target_ is any object of any type. It is the left-hand side operand of the `instanceof` operator, here the `s` variable.
+
+The _pattern_ is a type followed by a variable declaration. It is the right hand-side of the `instanceof`. The type can be a class, an abstract class or an interface.
+
+The result of the matching is a new reference to the _matched target_. This reference is put in the variable that is declared as a part of the pattern. It is created if the _matched target_ matches the _pattern_. This variable has the type you have matched.
+
+The compiler allows you to use the variable `s` wherever it makes sense to use it. The `if` branch is the first scope that comes to mind. It turns out that you can also use this variable in some parts of the `if` statement.
+
+### Pattern Matching for Switch Expressions
+
+Pattern Matching for Switch Expressions is a preview feature of JDK 17. 
+
+Pattern Matching for Switch Expressions uses switch expressions. It allows you to match a _matched target_ to several _patterns_ at once. So far the _patterns_ are _type patterns_, just as in the pattern matching for `instanceof`.
+
+In this case the _matched target_ is the selector expression of the switch. There are several _patterns_ in such a feature; each case of the switch expression is itself a type pattern that follows the syntax described in the previous section.
+
+With this preview feature, you can rewrite the previous code in the following way: 
+
+```
+var speaker = 
+   switch(s) {
+      case Keynote k -> speakers.getById(k.getKeynoteSpeaker());
+      case Lecture l -> speakers.getById(l.getSpeaker());
+      case Lab l     -> speakers.getById(l.getSpeaker());
+   }
+```
+
+So far it is not an extension of pattern matching itself; it is a new feature of the switch expression, that accepts a type pattern as a case label.
+
+In its current version, the switch expression accepts the following for the case labels:
+
+1. the following numeric types: `byte`, `short`, `char`, and `int`
+2. the corresponding wrapper types: `Byte`, `Short`, `Character` and `Integer`
+3. the type `String`
+4. enumerated types.
+
+Pattern matching for switch expressions adds the possibility to use type patterns for the case labels.
+
+### Future Directions for Pattern Matching
+
+Pattern matching can be used in conjunction with deconstruction. Because the compiler knows that a record is built on its component, it can use this information to deconstruct a record and expose its internal state directly. This could make the following code possible in the future: 
+
+```
+record Rectangle(int width, int height) {}
+
+// o is any variable
+if (o instanceof Rectangle(int width, int height) {
+   int surface = width*height;
+}
+```
+
+Introducing deconstruction through factory methods could brings more possibilities. Suppose you have a map and need to extract the value bound to the key "name". You could write it in this way:
+
+```
+Map<String, String> map = ...; // any map
+if (map instanceof Map.withMapping("name", String name)) {
+   // you can use name in this block of code
+}
+```
 
 ## Wrap-up
 
 In this exercise, you have used the **pattern matching for instanceof** feature, previewed in Java 14 and Java 15, and has been made a standard and permanent feature in Java 16. 
 
 The **pattern matching for instanceof** feature unarguably simplifies the code but in this particular scenario, the '`if … else if …`' chain makes this code repetitive and potentially brittle! Wouldn't it be nice to use a `switch` instead of this '`if … else if …`' chain?  In fact, the **pattern matching for instanceof** feature along with the **Switch Expression** feature (see Lab 9), the traditional Switch statement, the **Records** feature (see Lab 7) and the **Sealed Class** feature (see Lab 8) will enable, in the near future, powerful pattern matching in the Java platform, including the ability to do pattern matching with Switch.
-
-
-```
-// Comming soon: pattern matching with Switch
-// A switch on an Object! Exact syntax TBC
-…
-switch(s) {  
-   case Keynote kn -> …
-   case Lecture lc -> …
-   case Lab lb -> …
-}
-…
-```
 
 The **pattern matching for instanceof** feature supports one kind of pattern (type pattern) in one context (`instanceof`). This might seems limited but it is certainly more than a small nice-to-have improvement to simply save a few keystrokes! It is in fact one of the multiple new Java language features that together are slowly but surely paving the way for powerful pattern matching in the Java platform!
 

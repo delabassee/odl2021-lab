@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 397), a preview feature (2nd round in Java 16). This new feature enables the ability to create restricted class hierarchy. That is a class or interface that can declaratively restrict which other classes or interfaces may extend or implement them.
+In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 409), a feature of Java 17. This new feature enables the ability to create restricted class hierarchy. That is a class or interface that can declaratively restrict which other classes or interfaces may extend or implement them.
 
 
 💡 Despite its name, the **Sealed Classes** feature applies to both **classes** and **interfaces**.
@@ -27,14 +27,14 @@ Additionally a sealed class imposes three constraints on its permitted subclasse
 
 * Every permitted subclass must choose a modifier to describe how it continues the sealing initiated by its superclass:
 
-    * A permitted subclass may be declared final to prevent its part of the class hierarchy from being extended further.
+    * A permitted subclass may be declared final to prevent its part of the class hierarchy from being extended further. It can also be implicitly final (enumerated types and records).
     * A permitted subclass may be declared sealed to allow its part of the hierarchy to be extended further than envisaged by its sealed superclass, but in a restricted fashion.
     * A permitted subclass may be declared non-sealed so that its part of the hierarchy reverts to being open for extension by unknown subclasses. (A sealed class cannot prevent its permitted subclasses from doing this.)
  
 
 ## Your first Sealed Classes
 
-💡 **Sealed Classes** is a preview feature in JDK 16 so make sure that preview features are enabled both at compile time and run-time.
+💡 **Sealed Classes** is a standard and permanent feature in JDK 17.
 
 For the sake of this exercise, let us suppose that the conference application needs to deal with sessions of different types. 
 
@@ -344,20 +344,12 @@ It can be accessed via `{public_ip}:8080/sessions`.
 
 7. Create a new session type.
 
-The interesting part of the lab is the restricted Session classes hierarchy that you have created at the beginning. You can challenge it by creating, for example, a new session type (ex. `Quickie`) type that extends `Breakout`. Given that only `Lab` and `Lecture` are permitted to extend `Breakout`, the Java compiler will simply refuse that `Quickie` tries to extends `Breakout` but you should be able to fix this.
+The interesting part of the lab is the restricted `Session` classes hierarchy that you have created at the beginning. You can challenge it by creating, for example, a new session type (ex. `Quickie`) type that extends `Breakout`. Given that only `Lab` and `Lecture` are permitted to extend `Breakout`, the Java compiler will simply refuse that `Quickie` tries to extends `Breakout` but you should be able to fix this.
 
 ## Wrap-up
 
-In this exercise, you have used **Sealed Classes**. Sealed Classes is a new feature that enables a developer to define a restricted classes hierarchy, i.e. a developer has now the ability to explicitly states for a given class (or an interface) which classes (or interfaces) may extend (or implement) it. Sealed Classes is a previewed (2nd round) feature in JDK 16.
+In this exercise, you have used **Sealed Classes**. Sealed Classes is a new feature that enables a developer to define a restricted classes hierarchy, i.e. a developer has now the ability to explicitly states for a given class (or an interface) which classes (or interfaces) may extend (or implement) it. Sealed Classes is a feature in JDK 17.
 
-For more details, please check [JEP 397: Sealed Classes (2nd Preview)](https://openjdk.java.net/jeps/397) and the following [Java Feature Spotlight: Sealed Classes](https://www.infoq.com/articles/java-sealed-classes/) article.
+For more details, please check [JEP 409: Sealed Classes](https://openjdk.java.net/jeps/409) and the following [Java Feature Spotlight: Sealed Classes](https://www.infoq.com/articles/java-sealed-classes/) article.
 
-
- 
-
-
-
-
-
-
-
+You can also check the [JEP Café Episode #02](https://youtu.be/652kheEraHQ). 
