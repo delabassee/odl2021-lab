@@ -34,7 +34,7 @@ Additionally a sealed class imposes three constraints on its permitted subclasse
 
 ## Your first Sealed Classes
 
-💡 **Sealed Classes** is a feature in JDK 17.
+💡 **Sealed Classes** is a standard and permanent feature in JDK 17.
 
 For the sake of this exercise, let us suppose that the conference application needs to deal with sessions of different types. 
 
@@ -352,4 +352,4 @@ In this exercise, you have used **Sealed Classes**. Sealed Classes is a new feat
 
 For more details, please check [JEP 409: Sealed Classes](https://openjdk.java.net/jeps/409) and the following [Java Feature Spotlight: Sealed Classes](https://www.infoq.com/articles/java-sealed-classes/) article.
 
-You can also check the [JEP Café Episod #02](https://youtu.be/652kheEraHQ). 
+You can also check the [JEP Café Episode #02](https://youtu.be/652kheEraHQ). 

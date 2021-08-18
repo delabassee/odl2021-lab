@@ -178,8 +178,8 @@ var trackDetail = switch (speaker.track()) {
 
 In this exercise, you have used **Switch Expressions**, a standard feature since Java 14.
 
-Switch expressions complement nicely the traditional Swith statement by enabling to easily write less error-prone Switch cases. Moreover, the produced code is also more readable! 
+Switch expressions complement nicely the traditional Switch statement by enabling to easily write less error-prone Switch cases. Moreover, the produced code is also more readable! 
 
 For additional details, please check [JEP 361: Switch Expressions (Standard)](https://openjdk.java.net/jeps/361).
 
-You can also check the [JEP Café Episod #03](https://youtu.be/652kheEraHQ). 
+You can also check the [JEP Café Episode #03](https://youtu.be/652kheEraHQ). 

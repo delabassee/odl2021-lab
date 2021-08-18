@@ -524,7 +524,7 @@ For more details on Records, please check the following resources.
 * [JEP 395: Records](https://openjdk.java.net/jeps/395)
 * [Java Feature Spotlight: Records](https://inside.java/2020/02/04/spotlightrecords/)
 * [Simpler Serialization with Records](https://inside.java/2021/03/12/simpler-serilization-with-records/)
-* [JEP Café Episod #01](https://youtu.be/l1VrmvyIEpM)
+* [JEP Café Episode #01](https://youtu.be/l1VrmvyIEpM)
 
 
 
