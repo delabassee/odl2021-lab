@@ -270,7 +270,7 @@ if (o instanceof Rectangle(int width, int height) {
 }
 ```
 
-Introducing deconstruction through factory methods could bring more possibilities. Suppose you have a map and need to extract the value bound to the key "name". You could write it in this way:
+Introducing deconstruction through factory methods could brings more possibilities. Suppose you have a map and need to extract the value bound to the key "name". You could write it in this way:
 
 ```
 Map<String, String> map = ...; // any map
@@ -284,19 +284,6 @@ if (map instanceof Map.withMapping("name", String name)) {
 In this exercise, you have used the **pattern matching for instanceof** feature, previewed in Java 14 and Java 15, and has been made a standard and permanent feature in Java 16. 
 
 The **pattern matching for instanceof** feature unarguably simplifies the code but in this particular scenario, the '`if … else if …`' chain makes this code repetitive and potentially brittle! Wouldn't it be nice to use a `switch` instead of this '`if … else if …`' chain?  In fact, the **pattern matching for instanceof** feature along with the **Switch Expression** feature (see Lab 9), the traditional Switch statement, the **Records** feature (see Lab 7) and the **Sealed Class** feature (see Lab 8) will enable, in the near future, powerful pattern matching in the Java platform, including the ability to do pattern matching with Switch.
-
-
-```
-// Comming soon: pattern matching with Switch
-// A switch on an Object! Exact syntax TBC
-…
-switch(s) {  
-   case Keynote kn -> …
-   case Lecture lc -> …
-   case Lab lb -> …
-}
-…
-```
 
 The **pattern matching for instanceof** feature supports one kind of pattern (type pattern) in one context (`instanceof`). This might seems limited but it is certainly more than a small nice-to-have improvement to simply save a few keystrokes! It is in fact one of the multiple new Java language features that together are slowly but surely paving the way for powerful pattern matching in the Java platform!
 
