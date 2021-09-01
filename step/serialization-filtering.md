@@ -14,7 +14,7 @@ While serialization was vital to Java's success, it has also been a source of ma
 * The behavior of serialization depends on the "magic" methods and fields; `readObject`, `writeObject`, `readObjectNoData`, `readResolve`, `writeReplace`, `serialVersionUID`, and `serialPersistentFields`
 * Poor stream format that is not efficient, reusable, nor human readable 
 
-In this lab we will explore in-practice some of the short comings with serialization in Java, how some of these issues have been addressed in recent JEPs, and how Records addresses many of the remaining issues with serialization. 
+In this lab we will explore in-practice some of the short comings with serialization in Java, how serialization filters address some of these concerns, and how Records addresses many of the remaining issues with serialization. 
 
 ## Serializing a Class
 
