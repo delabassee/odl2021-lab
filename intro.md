@@ -11,7 +11,7 @@ To achieve this, you will use :
 
 * Helidon, a collection of Java libraries for writing microservices,
 
-* the Oracle Cloud Infrastructure (OCI). **+ ARM**
+* the Oracle Cloud Infrastructure (OCI).
 
 It is expected that you have Java knowledge and some basic Linux skills (ex. edit files). During this HoL, you will also use Maven and Git. The only thing you need on your side is an SSH client, a web browser, and a direct Internet connection.
 
@@ -21,10 +21,10 @@ You will use Helidon as it is easy, simple, and fast but obviously, all the Java
 **Acknowledgment**
 
  - Author: [David Delabassee](https://delabassee.com)
- - Contributors: Ewan Slater, Denys Makogon, Nicolai Parlog, Billy Korando
- - Last updated By David Delabassee, Aug .. 2021
+ - Contributors: José Paumard, Ewan Slater, Denys Makogon, Nicolai Parlog, Billy Korando
+ - Last updated By David Delabassee, Sept 1 2021
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/0"></span></div>
+<div style="display: none;"><span></span></div>
 
 
 

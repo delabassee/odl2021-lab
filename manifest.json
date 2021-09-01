@@ -59,22 +59,22 @@
              "filename": "step/pattern-matching.md"
         },
         {
-            "title": "Lab 11: Unix Domain Sockets",
-            "publisheddate": "03/03/2021",
-             "filename": "step/UDS.md"
-        },
-        {
-            "title": "Lab 12: Serialization",
-            "publisheddate": "07/30/2020",
-             "filename": "step/serialization.md"
-        },
-        {
-            "title": "Lab 13: Strongly Encapsulate JDK internals",
+            "title": "Lab 11: Strongly Encapsulate JDK internals",
             "publisheddate": "07/30/2020",
              "filename": "step/strong-encapsulation.md"
         },
         {
-            "title": "Lab 14: Enhanced Pseudo-Random Number Generators",
+            "title": "Bonus: Unix Domain Sockets",
+            "publisheddate": "03/03/2021",
+             "filename": "step/UDS.md"
+        },
+        {
+            "title": "Bonus: Serialization Filters",
+            "publisheddate": "07/30/2020",
+             "filename": "step/serialization.md"
+        },
+        {
+            "title": "Bonus: Enhanced Pseudo-Random Number Generators",
             "publisheddate": "07/30/2020",
              "filename": "step/pseudo-random-generator.md"
         },
