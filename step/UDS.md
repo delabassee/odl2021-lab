@@ -1,7 +1,5 @@
 # Unix Domain Sockets
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/13"></span></div>
-
 ## Overview
 
 In this 10-minutes lab, you will use **Unix domain sockets**, an addition to the existing [SocketChannel](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/nio/channels/SocketChannel.html)/[ServerSocketChannel](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/nio/channels/ServerSocketChannel.html) API.

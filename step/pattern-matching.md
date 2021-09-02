@@ -1,7 +1,5 @@
 # Pattern Matching for instanceof
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/10"></span></div>
-
 ## Overview
 
 In this 10-minutes lab, you will get some hands-on experience with the **pattern Matching for instanceof** feature previewed in Java 14 and Java 15, and made final and permanent in Java 16.
@@ -49,7 +47,7 @@ Check those 2 new classes. `AgendaService.java` introduces a new "/sessions" end
 
 Build and test the application, `curl {public_ip}:8080/sessions`
 
-![](./images/lab10-1.png " ")
+![](../images/lab10-1.png " ")
 
 
 

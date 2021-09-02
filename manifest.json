@@ -16,7 +16,7 @@
         {
             "title": "Lab 2: Setup your Oracle Cloud environment",
             "publisheddate": "07/30/2020",
-            "filename": "step/env-setup.md"
+            "filename": "step/oci-env-setup.md"
         },
         {
             "title": "Lab 3: Exploring Helidon",

@@ -69,7 +69,7 @@ mvn package -Pjlink-image -Djlink.image.defaultJvmOptions="--enable-preview"
 </copy>
 ```
 
-![](./images/lab11-1.png " ")
+![](../images/lab11-1.png " ")
 
 The result are impressive as the total size (the Java runtime, the application and its dependcies) went from ~320MB to ~80MB, a ~75% gain!
 

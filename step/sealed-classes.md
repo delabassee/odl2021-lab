@@ -1,7 +1,5 @@
 # Sealed Classes
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/8"></span></div>
-
 ## Overview
 
 In this 10-minutes lab, you will get some hands-on experiences with **Sealed Classes** (JEP 409), a feature of Java 17. This new feature enables the ability to create restricted class hierarchy. That is a class or interface that can declaratively restrict which other classes or interfaces may extend or implement them.

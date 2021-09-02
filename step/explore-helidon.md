@@ -1,7 +1,5 @@
 # Exploring Helidon
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/4"></span></div>
-
 ## Overview
 
 In this 5-minutes lab, you will create a simple Microservices exposing a REST endpoint using Helidon SE. The goal is to have some initial exposure to Helidon, gain some high-level understandings of Helidon and its development workflow.
@@ -20,32 +18,32 @@ One can generate the skeleton of a microservice using Helidon Maven archetypes. 
 
 Run '`helidon init`', and select the suggested options (**SE flavor**, **bare Minimal Helidon SE project**, and other default values).
 
-![](./images/lab3-1.png " ")
+![](../images/lab3-1.png " ")
 
 Go into the project directory (`cd java-devlive`), and check the newly generated project ('`tree -C .`'). You should notice it is a Maven project:
 * there is a `pom.xml`,
 * sources are located in `src/main/java/com/devlive/`,
 * tests are located in `src/test/java/com/devlive/`, …
 
-![](./images/lab3-2.png " ")
+![](../images/lab3-2.png " ")
 
 ## Build and test an Helidon project
 
 You can build the Helidon project using the '`mvn package`' command in the `java-devlive` directory. 
 
-![](./images/lab3-3.png " ")
+![](../images/lab3-3.png " ")
 
 💡 The initial build will take longer as Maven will first populate its local cache.
 
 You can now check the project's target directory ('`tree -C target`'), it should contain a lot of files including the dependencies used by the application, and the application itself.
 
-![](./images/lab3-4.png " ")
+![](../images/lab3-4.png " ")
 
 To run the application, simply use '`java -jar target/demo.jar`'.
 
 💡 Make sure to use the actual jar name.
 
-![](./images/lab3-5.png " ")
+![](../images/lab3-5.png " ")
 
 The sample service is now accessible locally on port 8080. Given that you have configured the VCN and the instance firewall to allow incoming traffic on port 8080, it should also be accessible via your instance's public IP address. 
 

@@ -1,7 +1,5 @@
 # Text Blocks
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/6"></span></div>
-
 ## Overview
 
 In this 10-minutes lab, you will use **Text Blocks**, a new Java feature.
@@ -14,7 +12,7 @@ Text blocks enable developers to easily embed string literals spanning multiple 
 
 For example, imagine that you have to embed in your Java code an HTML snippet that displays '_All I want to see is a "_'. Notice the double quotes at the end! Before Text Blocks, you would write something like this.
 
-```
+```nohighlight
 var element = "<p id=\"p1\">All I want to see is a \"</p>";
 ```
 
@@ -22,7 +20,7 @@ Notice that the HTML _id_ element attribute above requires its value to be enclo
 
 Things get worst if you want to preserve the readability and the formatting of the snippet. For example, to embed the following basic HTML list in Java code:
 
-```
+```nohighlight
 <ul id="test">
    <li><a href="https://abc.org/">ABC</a></li>
    <li><a href="https://xyz.org/">XYZ</a></li>
@@ -30,7 +28,7 @@ Things get worst if you want to preserve the readability and the formatting of t
 ```
 you would have to write something like this:
 
-```
+```nohighlight
 var test = "<ul id=\"test\">\n" +
            "   <li><a href=\"https://abc.org/\">ABC</a></li>\n" +
            "   <li><a href=\"https://xyz.org/\">XYZ</a></li>\n" +
@@ -100,7 +98,7 @@ bat src/main/resources/public/index.html
 ```
 
 Run the application and access, from your browser, the `/public` url, ex. `http://{public-ip}:8080/public`. You should get a basic UI to list speakers.
-![](./images/lab5-1.png " ") 
+![](../images/lab5-1.png " ") 
 
 If you try to access the root path (`http://{public-ip}:8080/`), you will get an error as there is no handler defined to handle this path. 
 

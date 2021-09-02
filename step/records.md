@@ -1,7 +1,5 @@
 # Records
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/7"></span></div>
-
 ## Overview
 
 In this 12-minute lab, you will use **Records**, a new Java language feature that went through 2 preview rounds (JDK 14, JDK 15) before being made final and permanent in Java 16.
@@ -449,7 +447,7 @@ If you now test the endpoint, you will get the shorter speaker representation (s
 
 💡 Use `curl` or FireFox to test this, not the Web UI as it needs to updated to cope with the updated JSON payload.
 
-![](./images/lab7-1.png " ")
+![](../images/lab7-1.png " ")
 
  
 3. You can update the `SpeakerSummary` record to improve the readability of your code. The mapping function used in the `.map()` method of the previous pattern can be integrated in the record itself.

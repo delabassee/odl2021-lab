@@ -1,7 +1,5 @@
 # Java SE Preview Features
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/4"></span></div>
-
 ## Overview
 
 
@@ -51,7 +49,7 @@ javac Vehicle.java
 </copy>
 ```
 
-![](./images/lab4-1.png " ")
+![](../images/lab4-1.png " ")
 
 
  This error simply informs you that you are trying to use the Sealed class feature which is a preview feature in Java 16, and that those are disabled by default. To use preview features, you need to explicitly enable them, at compile-time, using the `--enable-preview` flag. Note that, you also need to confirm to the Java compiler which version of the Preview Feature you are using (ex. using the `--release` flag). 
@@ -64,7 +62,7 @@ javac --enable-preview --release 16 Vehicle.java
 
 Those 2 flags are enforcing a safeguard mechanism that informs you that non-permanent features are used, and hence those might change in a future Java release.
 
-![](./images/lab4-1.5.png " ")
+![](../images/lab4-1.5.png " ")
 
 The compilation now succeeds. Notice that you are still warned that preview features are used in the code.
 

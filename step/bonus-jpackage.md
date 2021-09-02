@@ -1,7 +1,5 @@
 # jpackage
 
-<div style="display: none;"><span><img src="https://billy.delabassee.com:8080/p/odl-16-lab/11"></span></div>
-
 ## Overview
 
 This 10-minute optional lab will introduce you to **`jpackage`**, a tool that has started to incubate in JDK 14, and has been a production-ready feature in JDK 16.
