@@ -139,7 +139,7 @@ In your instance, run the following command:
 
 ```nohighlight
 <copy>
-source <(curl -L https://gist.githubusercontent.com/delabassee/a11e09dcf5a85dae87a5fd6a96ce77ea/raw/1baeda9d4401b4a6ea4acffade51a0030b79ce2a/vm-setup.sh)
+source <(curl -L https://gist.githubusercontent.com/delabassee/a11e09dcf5a85dae87a5fd6a96ce77ea/raw/01e06d26adb68659b0dbcbced93d969561fc1c1e/vm-setup.sh)
 </copy>
 ```
 
