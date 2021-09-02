@@ -4,11 +4,11 @@
 
 Serialization is the process of transforming an object graph into a bytestream. Appropriately the process of deserialization is the inverse, where a bytestream is converted into an object graph.
 
-Historically the process of serializing and deserializing an object graph required writing a lot of complex and often error-prone code. The implemention of serialization as a core Java feature was vital to Java's raise in popularity; allowing for the easy transmission and receiving of data to and from remote processes, persisting state to disk, and communication with external services like a database. 
+In the 80's and 90's serialization was a difficult problem, requiring developers to write a lot of hard to read and often error-prone code. To address this concern, serialization was implemented as a core Java feature and was vital for its raise in popularity; allowing for the easy transmission and receiving of data to and from remote processes, persisting state to disk, and communication with external services like a database. 
 
 ### Issues with Serialization in Java
 
-While serialization was vital to Java's success, it has also been a source of many headaches. The heaches come from several issues in how serialization was implemented in Java, a short list of issues include;
+While serialization was vital to Java's success, it has also been a source of many headaches. The headaches stem from many issues in how serialization was implemented in Java. A shortlist of issues include;
 
 * Breaks encapsulation by not calling constructors and setting fields reflectively.
 * The behavior of serialization depends on the "magic" methods and fields; `readObject`, `writeObject`, `readObjectNoData`, `readResolve`, `writeReplace`, `serialVersionUID`, and `serialPersistentFields`
@@ -319,15 +319,13 @@ Exception in thread "main" java.lang.ClassCastException: class Exploit cannot be
 
 The above are couple examples of many of how serialization can introduce difficult to track bugs, or potential security risks. 
 
-### Serialization Filters
+## Serialization Filters
 
-To help address some of the issues with serialization, a pair of JEPs have been implemented allowing filtering of serialized data:
- 
-* [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290) added in JDK 9 allows the definition of flexible serialization filters that limit what data can be deserialized. 
+Java has made serialization easy, but as the above demonstrates, also unsafe. As a consequence writing and maintain defensive code that secures your application from deserialization attacks has been very difficult. 
 
-* [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415) added in JDK 17 allows applications to configure context-specific and dynamically selected deserialization filters.
+The introduction of serialization filters with [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290) and [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415), greatly simplified the process of securing your Java applications from deserialization attacks.
 
-#### Using the Serialization Filter API
+### Using the Serialization Filter API
 
 JEP 290 provided the `ObjectInputFilter` interface API for defining a serialization filter. This is an example of an `ObjectInputFilter` that filters out serialized data that contains a `Runnable` instance, which could prevent the earlier described gadget chain attack:
 
@@ -357,7 +355,7 @@ When using the above filter, an `java.io.InvalidClassException` exception would 
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
 ...
 ```
-#### Setting Serialization Filters with JVM Arguments
+### Setting Serialization Filters with JVM Arguments
 
 Serialization filters can also be configured through the command line with the `jdk.serialFilter` JVM argument. Below is an example of filtering by the size of a byte stream:
 
@@ -386,11 +384,11 @@ These constraints and behaviors of Records close the loop on many the encapsulat
 
 **More resources**
 
-* [JEP 395: Records](https://openjdk.java.net/jeps/395)
-
 * [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290)
 
 * [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415)
+
+* [JEP 395: Records](https://openjdk.java.net/jeps/395)
 
 * [Towards Better Serialization](https://cr.openjdk.java.net/~briangoetz/amber/serialization.html) by Brian Goetz
 
