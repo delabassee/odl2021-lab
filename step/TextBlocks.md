@@ -12,27 +12,33 @@ Text blocks enable developers to easily embed string literals spanning multiple 
 
 For example, imagine that you have to embed in your Java code an HTML snippet that displays '_All I want to see is a "_'. Notice the double quotes at the end! Before Text Blocks, you would write something like this.
 
-```nohighlight
+```
+<copy>
 var element = "<p id=\"p1\">All I want to see is a \"</p>";
+</copy>
 ```
 
 Notice that the HTML _id_ element attribute above requires its value to be enclosed in double-quotes, so those double quotes need to be escaped in the Java code. 
 
 Things get worst if you want to preserve the readability and the formatting of the snippet. For example, to embed the following basic HTML list in Java code:
 
-```nohighlight
+```
+<copy>
 <ul id="test">
    <li><a href="https://abc.org/">ABC</a></li>
    <li><a href="https://xyz.org/">XYZ</a></li>
 </ul>
+</copy>
 ```
 you would have to write something like this:
 
-```nohighlight
+```
+<copy>
 var test = "<ul id=\"test\">\n" +
            "   <li><a href=\"https://abc.org/\">ABC</a></li>\n" +
            "   <li><a href=\"https://xyz.org/\">XYZ</a></li>\n" +
            "</ul>";
+</copy>
 ```
 
 
@@ -41,12 +47,14 @@ Not only is such code hard to write, and hence error-prone, but it is also hard 
 Thanks to Text Blocks, it is now a lot easier! A text block is simply a [String](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/String.html) literal that can span over multiple lines. A Text Block is delimited with the new **triple-quote delimiter** (`"""`) instead of the traditional double-quote delimiter (`"`).
 
 ```
+<copy>
 var test = """
         <ul id="test">
             <li><a href="https://abc.org/">ABC</a></li>
             <li><a href="https://xyz.org/">XYZ</a></li>
         </ul>
         """; 
+</copy>
 ```
 
 As you can see from the example below
@@ -63,12 +71,14 @@ The following code example is identical to the previous one but it doesn't use i
 
 
 ```
+<copy>
 var test = """
 <ul id="test">
    <li><a href="https://abc.org/">ABC</a></li>
    <li><a href="https://xyz.org/">XYZ</a></li>
 </ul>
 """; 
+</copy>
 ```
 The triple-quote closing delimiter defines how incidental white spaces are handled. Please check the resources at the end of the exercise for more details on those rules.
 
