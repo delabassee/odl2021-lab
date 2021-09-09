@@ -21,13 +21,11 @@ int numLetters = switch (day) {
 ```
 The Switch Expression also introduces a new `yield` statement to yield such value. And contrary to Switch Statement, exhaustiveness can be detected, removing the need for a default label. For additional details on Switch Expressions, please check [Switch Expressions (JEP 361)](https://openjdk.java.net/jeps/361).
 
-💡 Given that the Switch Expression feature is a standard feature since Java 14, it is not necessary to use the `enable-preview` flags to use this feature. Do note that the Conference application still requires those flags as it uses some preview features.
-
 ## Add Switch Expressions
 
 When browsing conference users, you can notice that the value used for the track is simply the value of the `Track.java` enumeration converted to a string, that is a bit crud (ex. it is in uppercase). 
 
-![](images/lab9-1.png " ")
+![](../images/lab9-1.png " ")
 
 
 In this exercise, you will use a Switch Expression to produce more user-friendly track names. You can either continue to modify the previous exercise or start from a clean codebase by checking out the Lab9 branch: `git checkout lab9`

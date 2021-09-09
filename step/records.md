@@ -328,6 +328,8 @@ import io.helidon.media.jackson.JacksonSupport;
 </copy>
 ```
 
+💡 Make sure that this new dependency is also defined in the project's Pom.xml.
+
 Compile the application and test it again (ex. http://{public-ip-address}:8080/speakers), it now works!
 
 You can notice that using Records leads to a more concise, more readable code when it comes to model data aggregates! Moreover, as more frameworks add support for Records, (ex. Jackson), this will lead to simpler and cleaner Java code.
@@ -411,7 +413,7 @@ This approach, while more cumbersome, shows that custom methods can be added to 
 
 When you are developing applications, think how many times you are creating intermediate values that are a simple group of variables? That should be very frequent! The Record feature is perfect to cope with such a use-case.
 
-Local Record is a feature introduced in the second Record preview in JDK 15. Local Records offer a convenient option to declare a record inside a method, close to where it is used.
+Local Records offer a convenient option to declare a record inside a method, close to where it is used.
 
 For this exercise, let's pretend that you want to return a simpler form of Speaker, ex. just the last name/first name pair and the company.
 
