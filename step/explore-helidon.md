@@ -71,7 +71,7 @@ This is the main class of the application. Amongst other things, its `startServe
 
 ```java
 …
-WebServer server = WebServer.builder(createRouting(config))
+WebServer webserver = WebServer.builder(createRouting(config))
     .config(config.get("server"))
     .addMediaSupport(JsonpSupport.create())
     .build();
@@ -87,6 +87,7 @@ The `startServer` method also invokes the `createRouting` method which amongst o
 ```java
 
 GreetService greetService = new GreetService(config);
+…
 return Routing.builder()
        …
       .register("/greet", greetService)
@@ -97,7 +98,7 @@ return Routing.builder()
 The webserver is then started.
 ```java
 …
-server.start()
+webserver.start()
       .thenAccept(ws -> { …
 …
 ```
@@ -130,8 +131,9 @@ The `getDefaultMessageHandler` simply creates, using the JSON-P API, a JSON docu
 
 ```java
 private void getDefaultMessageHandler(ServerRequest request, ServerResponse response) {
- …
+   …
    String msg = String.format("%s %s!", greeting, "World");
+   …
    JsonObject returnObject = JSON.createObjectBuilder()
        .add("message", msg)
        .build();
@@ -157,7 +159,7 @@ To use the 'devloop' approach, simply go in the project directory and run the '`
 
 💡 You can either run the 'devloop' in the background or run it in a separate shell. The latter approach enables you to easily see any potential errors as they happen.
 
-* Open a second SSh connection, and run '`helidon dev`'.
+* Open a second SSH connection, and run '`helidon dev`' in the project directory.
 
 * Using the initial SSH connection, slightly change the source code of the application, save it, and observe what is happening.
 

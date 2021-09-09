@@ -6,48 +6,48 @@
             "filename": "intro.md"
         },
         {         
-            "title": "Lab 1: Sign Up for your OCI Free Trial",
+            "title": "Step 1: Sign Up for your OCI Free Trial",
             "description": "Login to Oracle Cloud",
             "filename":"step/oci-signup.md"
         },
         {
-            "title": "Lab 2: Setup your Oracle Cloud environment",
+            "title": "Step 2: Setup your Oracle Cloud environment",
             "filename": "step/oci-env-setup.md"
         },
         {
-            "title": "Lab 3: Exploring Helidon",
+            "title": "Step 3: Exploring Helidon",
             "filename": "step/explore-helidon.md"
         },
         {
-            "title": "Lab 4: Java SE Preview Features",
+            "title": "Step 4: Java SE Preview Features",
             "filename": "step/preview-features.md"
         },
         {
-            "title": "Lab 5: The Sample Application",
+            "title": "Step 5: The Sample Application",
             "filename": "step/sample-application.md"
         },
         {
-            "title": "Lab 6: Text Blocks",
+            "title": "Step 6: Text Blocks",
             "filename": "step/TextBlocks.md"
         },
         {
-            "title": "Lab 7: Records",
+            "title": "Step 7: Records",
             "filename": "step/records.md"
         },
         {
-            "title": "Lab 8: Sealed Classes",
+            "title": "Step 8: Sealed Classes",
             "filename": "step/sealed-classes.md"
         },
         {
-            "title": "Lab 9: Switch Expressions",
+            "title": "Step 9: Switch Expressions",
             "filename": "step/switch-expression.md"
         },
         {
-            "title": "Lab 10: Pattern Matching",
+            "title": "Step 10: Pattern Matching",
             "filename": "step/pattern-matching.md"
         },
         {
-            "title": "Lab 11: Strongly Encapsulate JDK internals",
+            "title": "Step 11: Strongly Encapsulate JDK internals",
             "filename": "step/strong-encapsulation.md"
         },
         {
@@ -60,7 +60,7 @@
         },
         {
             "title": "Bonus: Enhanced Pseudo-Random Number Generators",
-            "filename": "step/pseudo-random-generator.md"
+            "filename": "step/random-generator.md"
         },
         {
             "title": "Bonus: jpackage",

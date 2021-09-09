@@ -74,7 +74,11 @@ Click on the **Edit** button of the **'Configure placement and hardware'** box.
 
 In the **Image** box, click on **Change Image**, and select **Oracle Linux 7.9** as the OS Platform image to use.
 
-If necessary, you can also change the shape of the instance. In the **Shape** box, click **"Change Shape"**. You can for example select the regular **VM.Standard.E2.1.Micro** shape from the **"Specialty and Legacy"** category.
+💡 As part of your OCI Free Tier account, you have access to 2 types of VM Shapes : **AMD-based shapes** and **Ampere shapes** (Arm64-based). Java is now fully supported on Arm64 CPU and altough the OCI Ampere shapes offer more benefits (ex. up-to 4 Arm64 OCPUs, up to 24 GB of memory), for this HoL we will stick to the regular lower-end AMD-based shape aka "VM.Standard.E2.1.Micro". You can learn more about OCI Always Free resources [here](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm).
+
+If necessary, you can change the shape of the instance. In the **Shape** box, click **"Change Shape"**. Make sure to select the regular **VM.Standard.E2.1.Micro** shape from the **"Specialty and Legacy"** category, and not from the **"AMD"** category .
+
+![](../images/lab2-shapes.png " ")
 
 💡 You will not be able to select a shape that does not fit within the limit of your free account.
 
@@ -100,7 +104,7 @@ In the **Add SSH keys** section, select **Generate SSH key pair** and click the 
 
 **4. Create the instance** 
 
-You can safely ignore the **Configure boot volume** section. Simply click **Create** to effectively start the instance provisioning process. After 50~70 seconds, the big square will switch from the (orange) **PROVISIONING** state to the (green) **RUNNING** state. That means that your instance is now up and running!
+You can safely ignore the **Boot volume** section. Simply click the bottom **Create** button to effectively start the instance provisioning process. After 40~60 seconds, the big square will switch from the (orange) **PROVISIONING** state to the (green) **RUNNING** state. That means that your instance is now up and running!
 
 ![](../images/lab2-11.png " ") 
 
