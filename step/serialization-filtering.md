@@ -1,10 +1,10 @@
-# Serialization Filtering
+# Serialization Filters
 
 ## Overview
 
 Serialization is the process of transforming an object graph into a bytestream. Appropriately the process of deserialization is the inverse, where a bytestream is converted into an object graph.
 
-In the 80's and 90's serialization was a difficult problem, requiring developers to write a lot of hard to read and often error-prone code. To address this concern, serialization was implemented as a core Java feature and was vital for its raise in popularity; allowing for the easy transmission and receiving of data to and from remote processes, persisting state to disk, and communication with external services like a database. 
+In the '80s and '90s serialization was a difficult problem, requiring developers to write a lot of hard to read and often error-prone code. To address this concern, serialization was implemented as a core Java feature and was vital for its rise in popularity; allowing for the easy transmission and receiving of data to and from remote processes, persisting state to disk, and communication with external services like a database. 
 
 ### Issues with Serialization in Java
 
@@ -12,13 +12,13 @@ While serialization was vital to Java's success, it has also been a source of ma
 
 * Breaks encapsulation by not calling constructors and setting fields reflectively.
 * The behavior of serialization depends on the "magic" methods and fields; `readObject`, `writeObject`, `readObjectNoData`, `readResolve`, `writeReplace`, `serialVersionUID`, and `serialPersistentFields`
-* Poor stream format that is not efficient, reusable, nor human readable 
+* Poor stream format that is not efficient, reusable, nor human-readable 
 
-In this lab we will explore in-practice some of the short comings with serialization in Java, how serialization filters address some of these concerns, and how Records addresses many of the remaining issues with serialization. 
+In this lab, we will see some short comings of serialization in Java, but more importantlyhow serialization filters address some of these concerns, and how Records addresses many of the remaining issues with serialization. 
 
 ## Serializing a Class
 
-To make a class serializable in Java, you just need to have it implement the `Serializable` interface, which works as a marker interface, and doesn't require implementing any methods. Let's create a simple class for holding a message called `Message`:
+To make a class serializable in Java, you just need to have it implement the `Serializable` interface, which works as a marker interface, and doesn't require implementing any methods. In a new directory, create a simple class for holding a message called `Message`:
 
 ```
 <copy>
@@ -26,7 +26,7 @@ nano Message.java
 </copy>
 ```
 
-Copy and paste the below:
+with the following content...
 
 ```java
 <copy>
@@ -53,7 +53,7 @@ public class Message implements Serializable {
 </copy>
 ```
 
-As seen in the above `Message` has a single field, `private final String message`. The only way to set the field is through the constructor, which has validation checks to make sure the field is neither null, nor empty. Further the default constructor is private and will throw an exception if called. So programmatically it should not be possible for the field `message` to be null. 
+As seen in the above `Message` has a single field, `private final String message`. The only way to set the field is through the constructor, which has validation checks to make sure the field is neither null, nor empty. Further, the default constructor is private and will throw an exception if called. So programmatically it should not be possible for the field `message` to be null. 
 
 To setup the serialization demonstration, we will use a Unix-Domain Socket-Channel.
 
@@ -65,7 +65,7 @@ nano SerializationServer.java
 </copy>
 ```
 
-In `SerializationServer.java` copy and past the following: 
+In `SerializationServer.java` copy and paste the following: 
 
 ```java
 <copy>
@@ -171,7 +171,7 @@ java SerializationClient.java
 You should get back `HELLO WORLD!`.
 
 ### Breaking Encapsulation
-Right now everything is behaving as explected, let's see how serialization breaks encapsulation. 
+Right now everything is behaving as expected, + see how serialization breaks encapsulation. 
 
 Start the "Server" again as a background process:
 
@@ -181,7 +181,7 @@ java SerializationServer.java &
 </copy>
 ```
 
-However before running the client, complete the following steps.
+However, before running the client, complete the following steps.
 
 Update `Message`:
 
@@ -279,9 +279,9 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String
 	at SerializationServer.main(SerializationServer.java:32)
 ``` 
 
-This happens because in Java when a bytestream is being deserialized, it's not the constructor of the class defined in the bytestream that is called, but instead an empty object is created and the fields are recursively set through reflection. 
+This happens because in Java when a bytestream is being deserialized, it's not the constructor of the class defined in the bytestream that is called, but instead, an empty object is created and the fields are recursively set through reflection. 
 
-The above demonstrates how this behavior undermines the integrity of the the object graph, creating subtle and difficult to fix bugs.
+The above demonstrates how this behavior undermines the integrity of the object graph, creating subtle and difficult to fix bugs.
 
 ### Injecting Code with Serialization
 Another serious concern with serialization is the ability to perform code injection through what is called a [gadget chain](https://blog.redteam-pentesting.de/2021/deserialization-gadget-chain/) attack.
@@ -317,7 +317,7 @@ Exception in thread "main" java.lang.ClassCastException: class Exploit cannot be
 	at SerializationServer.main(SerializationServer.java:27)
 ```
 
-The above are couple examples of many of how serialization can introduce difficult to track bugs, or potential security risks. 
+The above are couple examples of how serialization can introduce difficult to track bugs, or potential security risks. 
 
 ## Serialization Filters
 
@@ -349,13 +349,13 @@ class SerializationFilter implements ObjectInputFilter {
 }
 ```
 
-When using the above filter, an `java.io.InvalidClassException` exception would be thrown if the serialization filter encounters `Runnable`: 
+When using the above filter, a `java.io.InvalidClassException` exception would be thrown if the serialization filter encounters `Runnable`: 
 
 ```
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
 ...
 ```
-### Setting Serialization Filters with JVM Arguments
+### Setting Serialization Filters using JVM Arguments
 
 Serialization filters can also be configured through the command line with the `jdk.serialFilter` JVM argument. Below is an example of filtering by the size of a byte stream:
 
@@ -380,7 +380,7 @@ Introduced in Java 16, [JEP 395](https://openjdk.java.net/jeps/395), Records att
 
 These constraints allow records to be serialized from its public accessors, and deserialized using its canonical constructor. This also means that the serialization and deserialization of a record class cannot be modified by implementing any of the "magic" methods: `writeObject`, `readObject`, `readObjectNoData`, `writeExternal`, or `readExternal`.
 
-These constraints and behaviors of Records close the loop on many the encapsulation breaking and security concerns of serialization and deserialization. 
+These constraints and behaviors of Records close the loop on many of the encapsulation concerns of serialization and deserialization. 
 
 **More resources**
 
@@ -394,7 +394,7 @@ These constraints and behaviors of Records close the loop on many the encapsulat
 
 * [Record Serialization in Practice](https://inside.java/2021/04/06/record-serialization-in-practise/) by Julia Boes and Chris Hegarty 
 
-* [Why We Hate Java Serialization](https://inside.java/2019/11/07/whywehateserialization/) by Brian Goetz, Stuart Marks (VIDEO)
+* [Why We Hate Java Serialization](https://inside.java/2019/11/07/whywehateserialization/) by Brian Goetz, Stuart Marks
 
 * [Serialization Filtering](https://docs.oracle.com/en/java/javase/16/core/serialization-filtering1.html)
 
