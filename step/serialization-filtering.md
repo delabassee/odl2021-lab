@@ -14,7 +14,7 @@ While serialization was vital to Java's success, it has also been a source of ma
 * The behavior of serialization depends on the "magic" methods and fields; `readObject`, `writeObject`, `readObjectNoData`, `readResolve`, `writeReplace`, `serialVersionUID`, and `serialPersistentFields`
 * Poor stream format that is not efficient, reusable, nor human-readable 
 
-In this lab, we will see some short comings of serialization in Java, but more importantly how serialization filters address some of these concerns, and how Records addresses many of the remaining issues with serialization. 
+In this lab, we will see some short comings of serialization in Java, but more importantly how serialization filters address some of these concerns, and how Records are coping with serialization. 
 
 ## Serializing a Class
 
@@ -371,7 +371,7 @@ For more information on Serialization Filtering, see here: [https://docs.oracle.
 
 When developers need to serialize and deserialize an object graph, in the vast majority of cases the goal is the transmission of the *data* contained within the object graph, not the programmatic behavior in the object graph. As we see the desire to try to reconstitute the entire object graph is the source of many of the woes with Java serialization.
 
-Introduced in Java 16, [JEP 395](https://openjdk.java.net/jeps/395), Records attempt to address many of the outstanding issues with serialization by being transparent carriers of data. To achieve that goal Records have several design constraints including:
+Introduced in Java 16, [JEP 395](https://openjdk.java.net/jeps/395), Records address the outstanding issues with serialization by being transparent carriers of data. To achieve that goal, Records have several design constraints including:
 
 * A record's superclass is always `java.lang.Record`
 * Records are implicitly `final` and cannot be `abstract`
