@@ -6,7 +6,7 @@ In this 10-minute lab, you will learn about the importance and evolution of stro
 
 ## What is strong encapsulation about?
 
-In many respects the OpenJDK code base is similar to any other software project and one constant is refactoring.
+In many respects, the OpenJDK code base is similar to any other software project and one constant is refactoring.
 Code is changed, moved around, removed, etc. to keep the code base clean and maintainable.
 Not all code of course:
 The public API, the contract with Java's users, is extremely stable.
@@ -40,7 +40,7 @@ That means they are evolved with a similar regard for compatibility as standardi
 [Here's a list](https://cr.openjdk.java.net/~mr/jigsaw/jdk8-packages-strongly-encapsulated) of internal vs exported packages.
 
 The third one is `java.*`.
-Of course these packages make up the public API but that only extends to public members of public classes.
+Of course, these packages make up the public API but that only extends to public members of public classes.
 Less visible classes and members are just as internal as what we discussed so far.
 
 💡 In summary, use `java.*`, avoid `sun.*`, be careful with `com.sun.*`.
@@ -50,12 +50,15 @@ Less visible classes and members are just as internal as what we discussed so fa
 To experiment with strong encapsulation, let's create a simple class...
 
 ```shell
+<copy>
 nano Internal.java
+</copy>
 ```
 
 ...that uses a class from a public API:
 
 ```java
+<copy>
 public class Internal {
 
 	public static void main(String[] args) {
@@ -63,12 +66,15 @@ public class Internal {
 	}
 
 }
+</copy>
 ```
 
 Since it's a single class, you can run it straight away without explicit compilation:
 
 ```shell
+<copy>
 java Internal.java
+</copy>
 ```
 
 This should run successfully and print "List".
@@ -76,8 +82,10 @@ This should run successfully and print "List".
 Next, let's mix in one of those exceptions that are available for compatibility reasons:
 
 ```java
+<copy>
 // add to `main` method
 System.out.println(sun.misc.Unsafe.class.getSimpleName());
+</copy>
 ```
 
 You will still be able to run this straight away, printing "List" and "Unsafe".
@@ -85,8 +93,10 @@ You will still be able to run this straight away, printing "List" and "Unsafe".
 Now let's use an internal class that is not accessible:
 
 ```java
+<copy>
 // add to `main` method
 System.out.println(sun.util.PreHashedMap.class.getSimpleName());
+</copy>
 ```
 
 If you try to run this as before, you get a compile error (the `java` command compiles in memory):
@@ -105,12 +115,14 @@ The package `sun.util` belongs to the module _java.base_ and because that doesn'
 If you absolutely need to access it, though, you can with the command line option `--add-exports`:
 
 ```shell
+<copy>
 java --add-exports java.base/sun.util=ALL-UNNAMED Internal.java
+</copy>
 ```
 
 This makes the module _java.base_ export the `sun.util` package to code on the class path and thus the program runs successfully and prints "List", "Unsafe", and "PreHashedMap".
 
-## Strong encapsulation in practice
+## Strong Encapsulation in Practice
 
 There are two command line options that let you work around strong encapsulation:
 
