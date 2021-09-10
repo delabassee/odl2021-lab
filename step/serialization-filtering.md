@@ -170,6 +170,8 @@ java SerializationClient.java
 
 You should get back `HELLO WORLD!`.
 
+💡 You can kill the client using 'Control','c'.
+
 ### Breaking Encapsulation
 Right now everything is behaving as expected, let's see how serialization breaks encapsulation. 
 
@@ -226,7 +228,7 @@ javac Message.java
 </copy>
 ```
 
-Edit `SerializationClient`:
+Upudate `SerializationClient...
 
 ```
 <copy>
@@ -234,7 +236,7 @@ nano SerializationClient.java
 </copy>
 ```
 
-To pass `null` into the constructor of `Message`:
+to maliciously pass `null` into the constructor of `Message`:
 
 ```java
 <copy>
@@ -281,7 +283,7 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String
 
 This happens because in Java when a bytestream is being deserialized, it's not the constructor of the class defined in the bytestream that is called, but instead, an empty object is created and the fields are recursively set through reflection. 
 
-The above demonstrates how this behavior undermines the integrity of the object graph, creating subtle and difficult to fix bugs.
+The above demonstrates how serialization undermines the integrity of the object graph, creating subtle and difficult to fix bugs.
 
 ### Injecting Code with Serialization
 Another serious concern with serialization is the ability to perform code injection through what is called a [gadget chain](https://blog.redteam-pentesting.de/2021/deserialization-gadget-chain/) attack.
@@ -321,9 +323,9 @@ The above are couple examples of how serialization can introduce difficult to tr
 
 ## Serialization Filters
 
-Java has made serialization easy, but as the above demonstrates, also unsafe. As a consequence writing and maintain defensive code that secures your application from deserialization attacks has been very difficult. 
+Java has made serialization easy, but as the above demonstrates, also unsafe! As a consequence writing and maintaining defensive code that secures your application from deserialization attacks can be hard and time-consuming.
 
-The introduction of serialization filters with [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290) and [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415), greatly simplified the process of securing your Java applications from deserialization attacks.
+The introduction of serialization filters with [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290) in JDK 9 and [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415) in JDK 17, greatly simplified the process of securing your Java applications from deserialization attacks.
 
 ### Using the Serialization Filter API
 
@@ -357,7 +359,7 @@ Exception in thread "main" java.io.InvalidClassException: filter status: REJECTE
 ```
 ### Setting Serialization Filters using JVM Arguments
 
-Serialization filters can also be configured through the command line with the `jdk.serialFilter` JVM argument. Below is an example of filtering by the size of a byte stream:
+Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument. Below is an example of filter that limits the size of the incoming byte stream to 48 bytes:
 
 ```no-highlight
 java -Djdk.serialFilter=maxbytes=48 SerializationServer.java
