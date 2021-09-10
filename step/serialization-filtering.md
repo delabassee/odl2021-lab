@@ -84,7 +84,7 @@ import javax.naming.OperationNotSupportedException;
 
 public class SerializationServer {
 	public static void main(String[] args) throws Exception {
-		var address = UnixDomainSocketAddress.of("mnt/server");
+		var address = UnixDomainSocketAddress.of("server");
 		try (var serverChannel = ServerSocketChannel.open(UNIX)) {
 			serverChannel.bind(address);
 			try (var clientChannel = serverChannel.accept()) {
@@ -128,7 +128,7 @@ import java.nio.channels.SocketChannel;
 public class SerializationClient {
 
 	public static void main(String[] args) throws Exception {
-		var address = UnixDomainSocketAddress.of("mnt/server");
+		var address = UnixDomainSocketAddress.of("server");
 		try (var clientChannel = SocketChannel.open(address)) {
 
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -248,7 +248,7 @@ import java.nio.channels.SocketChannel;
 public class SerializationClient {
 
 	public static void main(String[] args) throws Exception {
-		var address = UnixDomainSocketAddress.of("mnt/server");
+		var address = UnixDomainSocketAddress.of("server");
 		try (var clientChannel = SocketChannel.open(address)) {
 
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
