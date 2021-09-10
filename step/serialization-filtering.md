@@ -96,7 +96,7 @@ public class SerializationServer {
 				ObjectInputStream in = new ObjectInputStream(byteInput);
 				Message message = (Message)in.readObject();
 
-System.out.println(message.message().toUpperCase());
+				System.out.println(message.message().toUpperCase());
 			}
 		} finally {
 			Files.deleteIfExists(address.getPath());
@@ -228,7 +228,7 @@ javac Message.java
 </copy>
 ```
 
-Upudate `SerializationClient...
+Update `SerializationClient`...
 
 ```
 <copy>
@@ -236,7 +236,7 @@ nano SerializationClient.java
 </copy>
 ```
 
-to maliciously pass `null` into the constructor of `Message`:
+To maliciously pass `null` into the constructor of `Message`:
 
 ```java
 <copy>
@@ -327,42 +327,92 @@ Java has made serialization easy, but as the above demonstrates, also unsafe! As
 
 The introduction of serialization filters with [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290) in JDK 9 and [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415) in JDK 17, greatly simplified the process of securing your Java applications from deserialization attacks.
 
-### Using the Serialization Filter API
-
-JEP 290 provided the `ObjectInputFilter` interface API for defining a serialization filter. This is an example of an `ObjectInputFilter` that filters out serialized data that contains a `Runnable` instance, which could prevent the earlier described gadget chain attack:
-
-```java
-class SerializationFilter implements ObjectInputFilter {
-	public Status checkInput(FilterInfo filterInfo) {
-		for (Class typeInterface : filterInfo.serialClass().getInterfaces()) {
-			if (typeInterface == Runnable.class) {
-				return Status.REJECTED;
-			}
-		}
-		for (Class classField : filterInfo.serialClass().getDeclaredClasses()) {
-			for (Class typeInterface : classField.getInterfaces()) {
-				if (typeInterface == Runnable.class) {
-					return Status.REJECTED;
-				}
-			}
-		}
-		return Status.ALLOWED;
-	}
-}
-```
-
-When using the above filter, a `java.io.InvalidClassException` exception would be thrown if the serialization filter encounters `Runnable`: 
-
-```
-Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
-...
-```
 ### Setting Serialization Filters using JVM Arguments
 
-Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument. Below is an example of filter that limits the size of the incoming byte stream to 48 bytes:
+Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument. 
+
+Incoming serialized data can be filtered by its size. To configure the serialization filter to reject any bytestream larger than 8 bytes in size run the following:
 
 ```no-highlight
-java -Djdk.serialFilter=maxbytes=48 SerializationServer.java
+<copy>
+java -Djdk.serialFilter=maxbytes=8 SerializationServer.java &
+</copy>
+```
+
+and run the client again:
+
+```no-highlight
+<copy>
+java SerializationClient.java
+</copy>
+```
+
+This will cause an exception to be thrown rejecting the incoming serialized data:
+
+```no-highlight
+Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
+```
+
+Serialization filters can also be configured to accept or reject based by type. To reject `Message` the following can be done:
+
+```no-highlight
+<copy>
+java -Djdk.serialFilter=\!Message SerializationServer.java &
+</copy>
+```
+
+Which when running the client again:
+
+```no-highlight
+<copy>
+java SerializationClient.java
+</copy>
+```
+
+will produce the same exception:
+
+```no-highlight
+Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
+```
+
+### Using the Serialization Filter API
+
+Filters can also be defined programmatically with the `ObjectInputFilter` interface API and added to the `ObjectInputStream` with `setObjectInputFilter`. `ObjectInputFilter` can be implemented directly, however there is also the factory method `ObjectInputFilter.Config.createFilter(String)` which takes in a pattern. 
+
+To create a filter that rejects on `Message` type, you would do the following: 
+
+```java
+<copy>
+in.setObjectInputFilter(ObjectInputFilter.Config.createFilter("!Message"));
+</copy>
+```
+
+And add it *after* this line `SerializationServer.java`:
+
+```
+ObjectInputStream in = new ObjectInputStream(byteInput);
+```
+
+Start the "server" again: 
+
+```no-highlight
+<copy>
+java SerializationServer.java &
+</copy>
+```
+
+run the client again:
+
+```no-highlight
+<copy>
+java SerializationClient.java
+</copy>
+```
+
+And an exception rejecting the serialized data will be thrown:
+
+```no-highlight
+Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
 ```
 
 For more information on Serialization Filtering, see here: [https://docs.oracle.com/en/java/javase/16/core/serialization-filtering1.html](https://docs.oracle.com/en/java/javase/16/core/serialization-filtering1.html)
