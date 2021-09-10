@@ -14,7 +14,7 @@ While serialization was vital to Java's success, it has also been a source of ma
 * The behavior of serialization depends on the "magic" methods and fields; `readObject`, `writeObject`, `readObjectNoData`, `readResolve`, `writeReplace`, `serialVersionUID`, and `serialPersistentFields`
 * Poor stream format that is not efficient, reusable, nor human-readable 
 
-In this lab, we will see some short comings of serialization in Java, but more importantlyhow serialization filters address some of these concerns, and how Records addresses many of the remaining issues with serialization. 
+In this lab, we will see some short comings of serialization in Java, but more importantly how serialization filters address some of these concerns, and how Records addresses many of the remaining issues with serialization. 
 
 ## Serializing a Class
 
@@ -171,7 +171,7 @@ java SerializationClient.java
 You should get back `HELLO WORLD!`.
 
 ### Breaking Encapsulation
-Right now everything is behaving as expected, + see how serialization breaks encapsulation. 
+Right now everything is behaving as expected, let's see how serialization breaks encapsulation. 
 
 Start the "Server" again as a background process:
 
