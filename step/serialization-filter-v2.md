@@ -4,7 +4,7 @@
 
 Serialization is the process of transforming an object graph into a bytestream. Appropriately the process of deserialization is the inverse, where a bytestream is converted into an object graph.
 
-In the '80s and '90s serialization was a difficult problem, requiring developers to write a lot of hard to read and often error-prone code. To address this concern, serialization was implemented as a core Java feature and was vital for its rise in popularity; allowing for the easy transmission and receiving of data to and from remote processes, persisting state to disk, and communication with external services like a database. 
+In the '80s and '90s serialization was a difficult problem, requiring developers to write a lot of hard-to-read and often error-prone code. To address this concern, serialization was implemented as a core Java feature and was vital for its rise in popularity; allowing for the easy transmission and receiving of data to and from remote processes, persisting state to disk, and communication with external services like a database. 
 
 ### Issues with Serialization in Java
 
@@ -14,7 +14,7 @@ While serialization was vital to Java's success, it has also been a source of ma
 * The behavior of serialization depends on the "magic" methods and fields; `readObject`, `writeObject`, `readObjectNoData`, `readResolve`, `writeReplace`, `serialVersionUID`, and `serialPersistentFields`
 * Poor stream format that is not efficient, reusable, nor human-readable 
 
-In this lab, we will see some short comings of serialization in Java, but more importantly how serialization filters address some of these concerns, and how Records are coping with serialization. 
+In this lab, we will see some shortcomings of Java serialization, but more importantly how serialization filters address some of these concerns, and how Records are coping with serialization. 
 
 ## Serializing a Class
 
@@ -46,9 +46,9 @@ public class Message implements Serializable {
 </copy>
 ```
 
-To setup the serialization demonstration, we will use a Unix-Domain Socket-Channel.
+To illustrate serialization, we will use a simple Unix-Domain Socket-Channel based client/server setup.
 
-Create a "Server" class:
+Create a Server class:
 
 ```
 <copy>
@@ -56,7 +56,7 @@ nano SerializationServer.java
 </copy>
 ```
 
-In `SerializationServer.java` copy and paste the following: 
+Paste the following code in `SerializationServer.java`:
 
 ```java
 <copy>
@@ -97,7 +97,7 @@ public class SerializationServer {
 </copy>
 ```
 
-Create a "Client" class:
+Create a Client...
 
 ```
 <copy>
@@ -105,7 +105,7 @@ nano SerializationClient.java
 </copy>
 ```
 
-And copy/paste the following:
+...and paste it the following code:
 
 ```java
 <copy>
@@ -135,7 +135,7 @@ public class SerializationClient {
 </copy>
 ```
 
-To execute the application, first compile the `Message`:
+To execute the application, first compile the `Message` class:
 
 ```
 <copy>
@@ -143,7 +143,7 @@ javac Message.java
 </copy>
 ```
 
-Next start the "Server" as a background process:
+Next, start the Server as a background process:
 
 ```
 <copy>
@@ -151,7 +151,7 @@ java SerializationServer.java &
 </copy>
 ```
 
-And then run the "Client":
+And then run the Client:
 
 ```
 <copy>
@@ -159,14 +159,14 @@ java SerializationClient.java
 </copy>
 ```
 
-You should get back `HELLO WORLD!`.
+The Server should get the `HELLO WORLD!` message sent by the Client.
 
-💡 You can kill the client using 'Control','c'.
+💡 You can kill the Client using 'Control','c'.
 
 ### Injecting Code with Serialization
-A serious concern with serialization is the ability to perform code injection through what is called a [gadget chain](https://blog.redteam-pentesting.de/2021/deserialization-gadget-chain/) attack.
+One of the (serious!) concerns with serialization is the ability to perform code injection through what is called a [gadget chain](https://blog.redteam-pentesting.de/2021/deserialization-gadget-chain/) attack.
 
-Create a new class called `Exploit`:
+To illustrate this, create a new class called `Exploit`:
 
 ```
 <copy>
@@ -174,7 +174,7 @@ nano Exploit.java
 </copy>
 ```
 
-And copy in the below `Exploit` class: 
+And copy it the following code: 
 
 ```java
 <copy>
@@ -199,7 +199,7 @@ public class Exploit implements Serializable {
 
 		@Override
 		public void run() {
-			System.out.println("Injected code executed, you have been hacked!");
+			System.out.println("Injected code executed! You have been Rick Rolled!");
 		}
 	};
 
@@ -215,7 +215,7 @@ Compile `Exploit`:
 
 ```
 <copy>
-javac Exploit.class
+javac Exploit.java
 </copy>
 ```
 
@@ -237,7 +237,7 @@ To send `Exploit` instead of `Message` by changing this line:
 Message message = new Message("Hello World!");
 ```
 
-to this line:
+to this:
 
 ```java
 <copy>
@@ -245,7 +245,7 @@ Exploit message = new Exploit("Hello World!");
 </copy>
 ```
 
-Start the `SerializationServer`:
+You can now start the `SerializationServer` again:
 
 ```
 <copy>
@@ -253,7 +253,7 @@ java SerializationServer.java &
 </copy>
 ```
 
-and run `SerializationClient`:
+and run the Client:
 
 ```
 <copy>
@@ -264,12 +264,12 @@ java SerializationClient.java
 You will get the below error message, but notice how the message defined in `CodeInjector.run()` is printed before the `ClassCastException`:
 
 ```
-Injected code executed, you have been hacked!
+Injected code executed! You have been Rick Rolled!
 Exception in thread "main" java.lang.ClassCastException: class Exploit cannot be cast to class Message (Exploit and Message are in unnamed module of loader 'app')
 	at SerializationServer.main(SerializationServer.java:27)
 ```
 
-Let's see how serialization filters can help address this issue. 
+Let's see how serialization filters can protect our code from such issues. 
 
 ## Serialization Filters
 
@@ -277,11 +277,13 @@ Java has made serialization easy, but as the above demonstrates, also unsafe! As
 
 The introduction of serialization filters with [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290) in JDK 9 and [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415) in JDK 17, greatly simplified the process of securing your Java applications from deserialization attacks.
 
+💡 You will often see the term "Serialization Filter" although those filters are always applied during deserialization, i.e. when the incoming byte stream is deserialized.
+
 ### Setting Serialization Filters using JVM Arguments
 
-Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument. 
+Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument to accept or reject a byte stream based on a type. 
 
-Serialization filters can also be configured to accept or reject based by type. Let's configure a serialization to block `Exploit`:
+Let's configure a serialization to block the `Exploit` type:
 
 ```no-highlight
 <copy>
@@ -289,7 +291,7 @@ java -Djdk.serialFilter=\!Exploit SerializationServer.java &
 </copy>
 ```
 
-running the client again:
+Running the same Client again...
 
 ```no-highlight
 <copy>
@@ -297,7 +299,7 @@ java SerializationClient.java
 </copy>
 ```
 
-Which will produce this exception:
+...will cause the Server to throw this exception:
 
 ```no-highlight
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
@@ -305,7 +307,7 @@ Exception in thread "main" java.io.InvalidClassException: filter status: REJECTE
 
 Note though how the message in `CodeInjector.run()` is not displayed. This is because serialization filter rejected it before attempting to deserialize the message.
 
-There are other ways to filter incoming byestreams, for example by size. To configure the serialization filter to reject any bytestream larger than 8 bytes in size run the following:
+There are other ways to filter incoming byestreams, for example by size. To configure a serialization filter to reject any bytestream longer than 8 bytes in size, run the Server with the following filter:
 
 ```no-highlight
 <copy>
@@ -321,17 +323,18 @@ java SerializationClient.java
 </copy>
 ```
 
-This will cause the same exception to be thrown again:
+This will cause the Server to throw again the same exception:
 
 ```no-highlight
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
 ```
+... which confirms that the Server has rejected the incomming byte stream, our code is safe from those attacks!
 
 ### Using the Serialization Filter API
 
 Filters can also be defined programmatically with the `ObjectInputFilter` interface API and added to the `ObjectInputStream` with `setObjectInputFilter`. `ObjectInputFilter` can be implemented directly, however there is also the factory method `ObjectInputFilter.Config.createFilter(String)` which takes in a pattern. 
 
-To create a filter that rejects on `Exploit` type, you would do the following: 
+To create a filter that rejects the `Exploit` type, you would do the following: 
 
 Update `SerializationServer.java`:
 
@@ -341,21 +344,16 @@ nano SerializationServer.java
 </copy>
 ```
 
-Copy the following serialization filter definition:
+When creating the `in` ObjectInputStream, define the filter on it using the following code:
 
 ```java
 <copy>
+ObjectInputStream in = new ObjectInputStream(byteInput);
 in.setObjectInputFilter(ObjectInputFilter.Config.createFilter("!Exploit"));
 </copy>
 ```
 
-and add it *after* this line in `SerializationServer.java`:
-
-```
-ObjectInputStream in = new ObjectInputStream(byteInput);
-```
-
-Start the "server" again: 
+Start the Server again.
 
 ```no-highlight
 <copy>
@@ -363,7 +361,7 @@ java SerializationServer.java &
 </copy>
 ```
 
-run the client again:
+Running the client again...
 
 ```no-highlight
 <copy>
@@ -371,13 +369,13 @@ java SerializationClient.java
 </copy>
 ```
 
-And an exception rejecting the serialized data will be thrown:
+... should throw cause the Server to throw  exception informing us that incoming bye stream data has been rejected, and hence the Server has not de-serialized it! Again, our code is protected from that attack.
 
 ```no-highlight
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
 ```
 
-For more information on Serialization Filtering, see here: [https://docs.oracle.com/en/java/javase/16/core/serialization-filtering1.html](https://docs.oracle.com/en/java/javase/16/core/serialization-filtering1.html)
+As you saw, Serialization Filters are easy to set up and should be used with any code that is using deserialization. For more information on Serialization Filtering, see here: [https://docs.oracle.com/en/java/javase/16/core/serialization-filtering1.html](https://docs.oracle.com/en/java/javase/16/core/serialization-filtering1.html)
 
 ## How Records Address Serialization
 
@@ -392,7 +390,7 @@ Introduced in Java 16, [JEP 395](https://openjdk.java.net/jeps/395), Records add
 * Explicit declarations of a derived member must match the type of automatically derived member exactly
 * Cannot contain `native` methods
 
-These constraints allow records to be serialized from its public accessors, and deserialized using its canonical constructor. This also means that the serialization and deserialization of a record class cannot be modified by implementing any of the "magic" methods: `writeObject`, `readObject`, `readObjectNoData`, `writeExternal`, or `readExternal`.
+These constraints allow records to be serialized from its public accessors and deserialized using its canonical constructor. This also means that the serialization and deserialization of a record class cannot be modified by implementing any of the "magic" methods: `writeObject`, `readObject`, `readObjectNoData`, `writeExternal`, or `readExternal`.
 
 These constraints and behaviors of Records close the loop on many of the encapsulation concerns of serialization and deserialization. 
 

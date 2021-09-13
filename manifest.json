@@ -56,7 +56,7 @@
         },
         {
             "title": "Bonus: Serialization Filters",
-            "filename": "step/serialization-filtering.md"
+            "filename": "step/serialization-filter-v2.md"
         },
         {
             "title": "Bonus: Enhanced Pseudo-Random Number Generators",
