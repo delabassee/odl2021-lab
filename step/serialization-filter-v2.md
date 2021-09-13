@@ -2,11 +2,15 @@
 
 ## Overview
 
+In this 15-minute lab you will explore the issues of serialization in Java and new features that help developers address these issues.  
+
+### Serialization in Java
+
 Serialization is the process of transforming an object graph into a bytestream. Appropriately the process of deserialization is the inverse, where a bytestream is converted into an object graph.
 
 In the '80s and '90s serialization was a difficult problem, requiring developers to write a lot of hard-to-read and often error-prone code. To address this concern, serialization was implemented as a core Java feature and was vital for its rise in popularity; allowing for the easy transmission and receiving of data to and from remote processes, persisting state to disk, and communication with external services like a database. 
 
-### Issues with Serialization in Java
+#### Issues with Serialization in Java
 
 While serialization was vital to Java's success, it has also been a source of many headaches. The headaches stem from many issues in how serialization was implemented in Java. A shortlist of issues include;
 
@@ -14,7 +18,7 @@ While serialization was vital to Java's success, it has also been a source of ma
 * The behavior of serialization depends on the "magic" methods and fields; `readObject`, `writeObject`, `readObjectNoData`, `readResolve`, `writeReplace`, `serialVersionUID`, and `serialPersistentFields`
 * Poor stream format that is not efficient, reusable, nor human-readable 
 
-In this lab, we will see some shortcomings of Java serialization, but more importantly how serialization filters address some of these concerns, and how Records are coping with serialization. 
+In this lab, you will see some shortcomings of Java serialization, but more importantly how serialization filters address some of these concerns, and how Records are coping with serialization. 
 
 ## Serializing a Class
 
@@ -46,7 +50,7 @@ public class Message implements Serializable {
 </copy>
 ```
 
-To illustrate serialization, we will use a simple Unix-Domain Socket-Channel based client/server setup.
+To illustrate serialization, you will use a simple Unix-Domain Socket-Channel based client/server setup.
 
 Create a Server class:
 
@@ -174,7 +178,7 @@ nano Exploit.java
 </copy>
 ```
 
-And copy it the following code: 
+And copy in the following code: 
 
 ```java
 <copy>
@@ -277,13 +281,13 @@ Java has made serialization easy, but as the above demonstrates, also unsafe! As
 
 The introduction of serialization filters with [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290) in JDK 9 and [JEP 415: Context-Specific Deserialization Filters](https://openjdk.java.net/jeps/415) in JDK 17, greatly simplified the process of securing your Java applications from deserialization attacks.
 
-💡 You will often see the term "Serialization Filter" although those filters are always applied during deserialization, i.e. when the incoming byte stream is deserialized.
+💡 You will often see the term "Serialization Filter" although those filters are always applied during deserialization, i.e. when the incoming bytestream is deserialized.
 
 ### Setting Serialization Filters using JVM Arguments
 
-Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument to accept or reject a byte stream based on a type. 
+Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument to accept or reject a bytestream based on a type. 
 
-Let's configure a serialization to block the `Exploit` type:
+Let's configure a serialization filter to block the `Exploit` type:
 
 ```no-highlight
 <copy>
@@ -305,7 +309,7 @@ java SerializationClient.java
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
 ```
 
-Note though how the message in `CodeInjector.run()` is not displayed. This is because serialization filter rejected it before attempting to deserialize the message.
+Note though how the message in `CodeInjector.run()` is not displayed. This is because serialization filter rejected it before attempting to deserialize the bytestream.
 
 There are other ways to filter incoming byestreams, for example by size. To configure a serialization filter to reject any bytestream longer than 8 bytes in size, run the Server with the following filter:
 
@@ -328,11 +332,11 @@ This will cause the Server to throw again the same exception:
 ```no-highlight
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
 ```
-... which confirms that the Server has rejected the incomming byte stream, our code is safe from those attacks!
+... which confirms that the Server has rejected the incoming bytestream, our code is safe from those attacks!
 
 ### Using the Serialization Filter API
 
-Filters can also be defined programmatically with the `ObjectInputFilter` interface API and added to the `ObjectInputStream` with `setObjectInputFilter`. `ObjectInputFilter` can be implemented directly, however there is also the factory method `ObjectInputFilter.Config.createFilter(String)` which takes in a pattern. 
+Filters can also be defined programmatically with the `ObjectInputFilter` interface API and added to the `ObjectInputStream` with `setObjectInputFilter(ObjectInputFilter)`. `ObjectInputFilter` can be implemented directly, however there is also the factory method `ObjectInputFilter.Config.createFilter(String)` which takes in a pattern. 
 
 To create a filter that rejects the `Exploit` type, you would do the following: 
 
@@ -369,7 +373,7 @@ java SerializationClient.java
 </copy>
 ```
 
-... should throw cause the Server to throw  exception informing us that incoming bye stream data has been rejected, and hence the Server has not de-serialized it! Again, our code is protected from that attack.
+... should cause the Server to throw an exception informing us that incoming bytestream data has been rejected, and hence the Server has not deserialized it! Again, our code is protected from that attack.
 
 ```no-highlight
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
@@ -379,22 +383,26 @@ As you saw, Serialization Filters are easy to set up and should be used with any
 
 ## How Records Address Serialization
 
-When developers need to serialize and deserialize an object graph, in the vast majority of cases the goal is the transmission of the *data* contained within the object graph, not the programmatic behavior in the object graph. As we see the desire to try to reconstitute the entire object graph is the source of many of the woes with Java serialization.
+When developers need to serialize and deserialize an object graph, in the vast majority of cases the goal is the transmission of the *data* contained within the object graph, not the programmatic behavior in the object graph. As you see the desire to try to reconstitute the entire object graph is the source of many of the woes with Java serialization.
 
 Introduced in Java 16, [JEP 395](https://openjdk.java.net/jeps/395), Records address the outstanding issues with serialization by being transparent carriers of data. To achieve that goal, Records have several design constraints including:
 
-* A record's superclass is always `java.lang.Record`
+* A Record's superclass is always `java.lang.Record`
 * Records are implicitly `final` and cannot be `abstract`
 * All fields in a record are `final` and derived from the components defined in its declaration
 * Instance fields cannot be declared and cannot have instance initializers 
 * Explicit declarations of a derived member must match the type of automatically derived member exactly
 * Cannot contain `native` methods
 
-These constraints allow records to be serialized from its public accessors and deserialized using its canonical constructor. This also means that the serialization and deserialization of a record class cannot be modified by implementing any of the "magic" methods: `writeObject`, `readObject`, `readObjectNoData`, `writeExternal`, or `readExternal`.
+These constraints allow Records to be serialized from its public accessors and deserialized using its canonical constructor. This also means that the serialization and deserialization of a Record class cannot be modified by implementing any of the "magic" methods: `writeObject`, `readObject`, `readObjectNoData`, `writeExternal`, or `readExternal`.
 
 These constraints and behaviors of Records close the loop on many of the encapsulation concerns of serialization and deserialization. 
 
-**More resources**
+## Wrap-up
+
+In this exercise, you learned about some of the issues with serialization in Java and how to use some recently introduced features in Java to address these concerns.
+
+For more information on serialization in Java, please check the following resources: 
 
 * [JEP 290: Filter Incoming Serialization Data](https://openjdk.java.net/jeps/290)
 
