@@ -32,17 +32,10 @@ with the following content...
 <copy>
 import java.io.Serializable;
 
-import javax.naming.OperationNotSupportedException;
-
 public class Message implements Serializable {
 	private final String message;
-	private Message() throws OperationNotSupportedException {
-		throw new OperationNotSupportedException();
-	}
+
 	public Message(String message) {
-		if (message == null || message.isEmpty()) {
-			throw new IllegalArgumentException("Message cannot be null or empty!");
-		}
 		this.message = message;
 	}
 
@@ -52,8 +45,6 @@ public class Message implements Serializable {
 }
 </copy>
 ```
-
-As seen in the above `Message` has a single field, `private final String message`. The only way to set the field is through the constructor, which has validation checks to make sure the field is neither null, nor empty. Further, the default constructor is private and will throw an exception if called. So programmatically it should not be possible for the field `message` to be null. 
 
 To setup the serialization demonstration, we will use a Unix-Domain Socket-Channel.
 
@@ -172,28 +163,18 @@ You should get back `HELLO WORLD!`.
 
 💡 You can kill the client using 'Control','c'.
 
-### Breaking Encapsulation
-Right now everything is behaving as expected, let's see how serialization breaks encapsulation. 
+### Injecting Code with Serialization
+A serious concern with serialization is the ability to perform code injection through what is called a [gadget chain](https://blog.redteam-pentesting.de/2021/deserialization-gadget-chain/) attack.
 
-Start the "Server" again as a background process:
-
-```
-<copy>
-java SerializationServer.java &
-</copy>
-```
-
-However, before running the client, complete the following steps.
-
-Update `Message`:
+Create a new class called `Exploit`:
 
 ```
 <copy>
-nano Message.java
+nano Exploit.java
 </copy>
 ```
 
-By commenting the validation checks in the `public Message(String)`:
+And copy in the below `Exploit` class: 
 
 ```java
 <copy>
@@ -201,98 +182,18 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 
-public class Message implements Serializable {
+public class Exploit implements Serializable {
 
-	private final String message;
-	private Message() throws OperationNotSupportedException {
-		throw new OperationNotSupportedException();
-	}
-	public Message(String message) {
-//		if (message == null || message.isEmpty()) {
-//			throw new IllegalArgumentException("Message cannot be null or empty!");
-//		}
+	private String message;
+	private interface CodeInjector extends Runnable, Serializable {}
+
+	public Exploit(String message) {
 		this.message = message;
 	}
 
 	public String getMessage() {
 		return message;
 	}
-}
-</copy>
-```
-Recompile `Message`:
-
-```
-<copy>
-javac Message.java
-</copy>
-```
-
-Update `SerializationClient`...
-
-```
-<copy>
-nano SerializationClient.java
-</copy>
-```
-
-To maliciously pass `null` into the constructor of `Message`:
-
-```java
-<copy>
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.net.UnixDomainSocketAddress;
-import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
-
-public class SerializationClient {
-
-	public static void main(String[] args) throws Exception {
-		var address = UnixDomainSocketAddress.of("server");
-		try (var clientChannel = SocketChannel.open(address)) {
-
-			ByteArrayOutputStream out = new ByteArrayOutputStream();
-			Message message = new Message(null);
-			ObjectOutputStream objectStream = new ObjectOutputStream(out);
-			objectStream.writeObject(message);
-			ByteBuffer buf = ByteBuffer.wrap(out.toByteArray());
-
-			clientChannel.write(buf);
-		}
-	}
-}
-</copy>
-```
-
-Now run `SerializationClient`:
-
-```
-<copy>
-java SerializationClient.java
-</copy>
-```
-
-This will cause `SerializationServer` to throw a `NullPointerException` and a very confused developer as it shouldn't be possible for the field `message` to be null! 
-
-```no-highlight
-Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.toUpperCase()" because the return value of "Object.toString()" is null
-	at SerializationServer.main(SerializationServer.java:32)
-``` 
-
-This happens because in Java when a bytestream is being deserialized, it's not the constructor of the class defined in the bytestream that is called, but instead, an empty object is created and the fields are recursively set through reflection. 
-
-The above demonstrates how serialization undermines the integrity of the object graph, creating subtle and difficult to fix bugs.
-
-### Injecting Code with Serialization
-Another serious concern with serialization is the ability to perform code injection through what is called a [gadget chain](https://blog.redteam-pentesting.de/2021/deserialization-gadget-chain/) attack.
-
-An example of this is with the below `Exploit` class: 
-
-```java
-public class Exploit implements Serializable {
-	private interface CodeInjector extends Runnable, Serializable {}
 
 	private CodeInjector injectedCode = new CodeInjector() {
 
@@ -307,11 +208,60 @@ public class Exploit implements Serializable {
 		injectedCode.run();
 	}
 }
+</copy>
+```
+
+Compile `Exploit`:
+
+```
+<copy>
+javac Exploit.class
+</copy>
 ```
 
 `Exploit` defines and implements an instance of `CodeInjector` an interface that extends `Runnable` and `Serializable`. `Exploit` also defines its own `readObject()`, one of the "magic" methods that controls the deserialization of an object. In `readObject()` the `run()` of `CodeInjector` is being called. 
 
-What makes this dangerous is that an object is deserialized before its type is checked. If `SerializationClient` was updated to send `Exploit` instead of `Message` the below response would be printed by `SerializationServer`, note how the message defined in `CodeInjector.run()` is printed before the `ClassCastException`:
+What makes this dangerous is that an object is deserialized before its type is checked. Let's see this in action.  
+
+Update `SerializationClient`:
+
+```
+<copy>
+nano SerializationClient.java
+</copy>
+```
+
+To send `Exploit` instead of `Message` by changing this line:
+
+```java
+Message message = new Message("Hello World!");
+```
+
+to this line:
+
+```java
+<copy>
+Exploit message = new Exploit("Hello World!");
+</copy>
+```
+
+Start the `SerializationServer`:
+
+```
+<copy>
+java SerializationServer.java &
+</copy>
+```
+
+and run `SerializationClient`:
+
+```
+<copy>
+java SerializationClient.java
+</copy>
+```
+
+You will get the below error message, but notice how the message defined in `CodeInjector.run()` is printed before the `ClassCastException`:
 
 ```
 Injected code executed, you have been hacked!
@@ -319,7 +269,7 @@ Exception in thread "main" java.lang.ClassCastException: class Exploit cannot be
 	at SerializationServer.main(SerializationServer.java:27)
 ```
 
-The above are couple examples of how serialization can introduce difficult to track bugs, or potential security risks. 
+Let's see how serialization filters can help address this issue. 
 
 ## Serialization Filters
 
@@ -331,7 +281,31 @@ The introduction of serialization filters with [JEP 290: Filter Incoming Seriali
 
 Serialization filters can be configured through the command line with the `jdk.serialFilter` JVM argument. 
 
-Incoming serialized data can be filtered by its size. To configure the serialization filter to reject any bytestream larger than 8 bytes in size run the following:
+Serialization filters can also be configured to accept or reject based by type. Let's configure a serialization to block `Exploit`:
+
+```no-highlight
+<copy>
+java -Djdk.serialFilter=\!Exploit SerializationServer.java &
+</copy>
+```
+
+running the client again:
+
+```no-highlight
+<copy>
+java SerializationClient.java
+</copy>
+```
+
+Which will produce this exception:
+
+```no-highlight
+Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
+```
+
+Note though how the message in `CodeInjector.run()` is not displayed. This is because serialization filter rejected it before attempting to deserialize the message.
+
+There are other ways to filter incoming byestreams, for example by size. To configure the serialization filter to reject any bytestream larger than 8 bytes in size run the following:
 
 ```no-highlight
 <copy>
@@ -347,29 +321,7 @@ java SerializationClient.java
 </copy>
 ```
 
-This will cause an exception to be thrown rejecting the incoming serialized data:
-
-```no-highlight
-Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
-```
-
-Serialization filters can also be configured to accept or reject based by type. To reject `Message` the following can be done:
-
-```no-highlight
-<copy>
-java -Djdk.serialFilter=\!Message SerializationServer.java &
-</copy>
-```
-
-Which when running the client again:
-
-```no-highlight
-<copy>
-java SerializationClient.java
-</copy>
-```
-
-will produce the same exception:
+This will cause the same exception to be thrown again:
 
 ```no-highlight
 Exception in thread "main" java.io.InvalidClassException: filter status: REJECTED
@@ -379,7 +331,7 @@ Exception in thread "main" java.io.InvalidClassException: filter status: REJECTE
 
 Filters can also be defined programmatically with the `ObjectInputFilter` interface API and added to the `ObjectInputStream` with `setObjectInputFilter`. `ObjectInputFilter` can be implemented directly, however there is also the factory method `ObjectInputFilter.Config.createFilter(String)` which takes in a pattern. 
 
-To create a filter that rejects on `Message` type, you would do the following: 
+To create a filter that rejects on `Exploit` type, you would do the following: 
 
 Update `SerializationServer.java`:
 
@@ -393,7 +345,7 @@ Copy the following serialization filter definition:
 
 ```java
 <copy>
-in.setObjectInputFilter(ObjectInputFilter.Config.createFilter("!Message"));
+in.setObjectInputFilter(ObjectInputFilter.Config.createFilter("!Exploit"));
 </copy>
 ```
 
