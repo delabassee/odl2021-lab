@@ -14,6 +14,8 @@ We hope you have learned something today. The call to action is to download Java
 
 For more information on Java 17, and on the Java platform in general, we encourage you to regularly check [Inside Java](https://inside.java), and to follow [@Java](https://twitter.com/java) on Twitter. Moreover, you might also want to listen to the [Inside Java Podcast](https://inside.java/podcast), watch the [JEP Café](https://www.youtube.com/playlist?list=PLX8CzqL3ArzV4BpOzLanxd4bZr46x5e87) and the [Inside Java Newscast](https://www.youtube.com/playlist?list=PLX8CzqL3ArzX8ZzPNjBgji7rznFFiOr58), and have a regular [Sip of Java](https://inside.java/sip/) on us. 
 
+Adn last but not least, make sure to visit [Dev.java](https://dev.java), the Destination for Java developers!
+
 
 PS: Do not forget that you now have access to the [Oracle Cloud Free Tier (Always Free)](https://www.oracle.com/cloud/free/)!
 
