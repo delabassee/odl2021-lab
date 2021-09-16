@@ -7,7 +7,7 @@ The goal of this Hands-on-Lab is to allow you to discover, on Oracle Cloud, some
 
 To achieve this, you will use :
 
-* Java SE 17, released on September 14th 2021.
+* Java SE 17, released on September 14th 2021,
 
 * Helidon, a collection of Java libraries for writing microservices,
 
