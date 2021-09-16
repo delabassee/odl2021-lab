@@ -29,10 +29,8 @@ This repository has several branches (`git branch -a`).&nbsp;
 * `lab7` : lab 7 starting point, including the lab 5 and 6 solution
 * `lab8` : lab 8 starting point, including the lab 5 to 7 solutions
 * `lab9` : lab 9 starting point, including the lab 5 to 8 solutions
-* `lab10` : lab 10 starting point, including the lab 5 to 9 solutions
-* `lab11` : all solutions from lab 5 to 10 included
 
-💡 Lab 11, 12, and 13 are not based on the sample application.
+💡 Starting Lab 10, the sample applicaton is not used. 
 
 Switch to the starting point
 
