@@ -22,7 +22,7 @@ You will use Helidon as it is easy, simple, and fast but obviously, all the Java
 
  - Author: [David Delabassee](https://delabassee.com)
  - Contributors: José Paumard, Ewan Slater, Denys Makogon, Nicolai Parlog, Billy Korando
- - Last updated By David Delabassee, Sept 1 2021
+ - Last updated By David Delabassee, Sept. 15 2021
 
 <div style="display: none;"><span></span></div>
 
